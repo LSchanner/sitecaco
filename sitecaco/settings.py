@@ -83,9 +83,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+#preprocessador de templates, adiciona URL_BASE ao contexto
+def urlbase(request):
+    return {'URL_BASE': URL_BASE}
+
 TEMPLATE_CONTEXT_PROCESSORS = (
    "django.contrib.auth.context_processors.auth",
    "django.core.context_processors.request",
+   "sitecaco.settings.urlbase"
 )
 
 
