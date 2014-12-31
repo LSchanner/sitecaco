@@ -42,7 +42,11 @@ def NoticiaView(request,id):
     form = formComentario()
 
     t = loader.get_template('noticia.html')
+
+    # Aqui usamos RequestContext, então devemos adicionar
+    # a url base manualmente
     c = RequestContext(request,{'post':post,'form':form,'comments':comments})
+    c['URL_BASE'] = URL_BASE
     return HttpResponse(t.render(c))
 
 
