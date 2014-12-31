@@ -2,29 +2,29 @@
 
 ## Instalação
 ### requerimentos do sistema
-    * python3
+* python3
 
 #### libs de python (instale com pip)
-    * django
-    * pymysql
-    * django-forms-bootstp
-    * django-haystack
-    * pillow
-    
+* django
+* pymysql
+* django-forms-bootstp
+* django-haystack
+* pillow
+
 
 ### procedimento
-    clone o repositório,  
-    crie o sitecaco/local_settings.py com o seguinte conteúdo:
-    ```
+clone o repositório,  
+crie o sitecaco/local_settings.py com o seguinte conteúdo:
+
+
+
     import os
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-    SECRET_KEY = "iawepcruqp943rvanh39845yvmmhmofn24jnmnafiuwenkjnbxmcn2948ajv"
+    SECRET_KEY = "chave_aleatória_qualquer"
 
-    # SECURITY WARNING: don't run with debug turned on in production!  
     DEBUG = True
     TEMPLATE_DEBUG = True 
 
-    # Database
     # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
     DATABASES = {
         'default': {
@@ -44,14 +44,17 @@
     #URL Base, usado em todos os links absolutos do site
     URL_BASE = ""
 
-    ```
-    depois, execute
 
-    ```
+
+depois, execute
+
+
+
     python3 manage.py makemigrations
     python3 manage.py migrate
     python3 manage.py runserver
-    ```
-    Qualquer problema, não hesite em contatar os administradores do repositório 
+
+
+Qualquer problema, não hesite em contatar os administradores do repositório 
 
 
