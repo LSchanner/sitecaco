@@ -1,0 +1,17 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{flatpage.title}}{% endblock %}
+{% block pagtitle%}{{flatpage.title}}{%endblock%}
+{% block script%} 
+<script>
+    $(document).ready(function(){
+        $('img').addClass('img-responsive');
+    });
+</script>
+{% endblock %}
+{% block content %}
+
+{{flatpage.content|safe}}
+
+
+{% endblock %}

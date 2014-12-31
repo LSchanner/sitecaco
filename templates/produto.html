@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{produto.name}}{% endblock %}
+{% block pagtitle %}{{produto.name}} - Produtos - CACo{% endblock %}
+
+{%block css%} <link href="/static/css/shop-homepage.css" rel="stylesheet">{%endblock%}
+{%block content%}
+
+<div class="thumbnail">
+	<img class="img-responsive" src="{{produto.imagem.url}}" alt="">
+	<div class="caption-full">
+		<h4 class="pull-right">R$ {{produto.price}}</h4>
+		<h4><a href="#">{{produto.name}}</a>
+		</h4>
+		<p>{{produto.description|safe}}</p>
+		</div>
+		<div class="ratings">
+			<p class="pull-right"> &infin; reviews</p>
+			<p>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				<span class="glyphicon glyphicon-star"></span>
+				5.0 stars
+			</p>
+		</div>
+	</div>
+
+{% endblock %}

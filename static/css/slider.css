@@ -1,0 +1,18 @@
+
+.sy-pager li.sy-active a{
+    background-color: rgba(67, 188, 94, 1);
+}
+.header {
+    background-color: #004119;
+    padding-bottom:10px;
+}
+@media(max-width:768px){
+    #slidercontainer{
+        width:100%;
+        padding-left:0px;
+        margin-left:0px;
+        margin-right:0px;
+        padding-right:0px;
+    }
+}
+

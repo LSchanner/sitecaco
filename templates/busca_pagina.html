@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+{% block title %}Busca - CACo{% endblock %}
+{% block pagtitle%}Busca em Páginas{%endblock%}
+{% block css %} <link href="/static/css/busca.css" rel="stylesheet"> {%endblock%}
+
+{% block content %}
+
+<div>
+    <form action="{{URL_BASE}}/busca/pagina/">
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Busque nas Páginas">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" value="Search">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+
+{% if query %}
+
+<h2 >Páginas</h2>
+<div class="resultados">
+    {% for pagina in page.object_list %}
+    <div style="margin-bottom:50px;">
+        <h2>
+            <a href="{{ URL_BASE }}{{pagina.object.url}}">{{ pagina.object.title }}</a>
+        </h2>
+
+        <p>{{pagina.object.content|truncatewords_html:70|safe}}</p>
+        <a class="btn btn-primary" href="{{ URL_BASE }}{{pagina.object.url}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        <hr>
+    </div>
+    {% empty %}
+    <p>Nenhuma página encontrada.</p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+<ul class="pager">
+    {% if page.has_previous %}
+    <li class="pull-left">
+    <a href="{{ URL_BASE }}/busca/pagina/{{page.previous_page_number}}?q={{query}}">&larr; Página Anterior</a>
+    </li>
+    {% endif %}
+    {% if page.has_next  %}
+    <li class="pull-right">
+    <a href="{{ URL_BASE }}/busca/pagina/{{page.next_page_number}}?q={{query}}"> Próxima Página &rarr;</a>
+    </li>
+    {% endif %}
+
+</ul>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Banco de Provas - CACo{% endblock %}
+{% block pagtitle%}Banco de Provas{%endblock%}
+{% block css %} <link href="/static/css/banco.css" rel="stylesheet"> {%endblock%}
+
+{% block content %}
+
+<p>
+Caso você encontre algum erro nas provas ou queira constribuir para o aumento do nosso banco de dados, entre em contato conosco. Solicitamos que seja informada a disciplina, o tipo de prova, o ano e o semestre, além de, se possível, o professor responsável por ela. Para que a nossa database se mantenha atualizada, somente estamos aceitando provas a partir de 2006. Também aceitamos testes e listas de exercício, preferencialmente resolvidos.
+</p>
+
+<p>
+Observação: Todas as provas deste Banco são contribuições de terceiros, sendo que o CACo não se responsabiliza pela corretude das mesmas. Caso você não concorde com algum material hospedado aqui, entre em contato conosco.
+</p>
+<div>
+    <form action="">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Busque no Banco de Provas">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+{% if resultados %}
+<h3> Resultados </h3>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Matéria</th>
+                <th>Tipo</th>
+                <th>Semestre</th>
+                <th>Professor</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{resultado.materia}}</td>
+                <td>{{resultado.tipo}}</td>
+                <td>{{resultado.semestre}}</td>
+                <td>{{resultado.professor}}</td>
+                <td><a href="{{resultado.file.url}}">Download</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+
+{% endblock %}

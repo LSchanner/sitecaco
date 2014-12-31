@@ -1,0 +1,116 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+{% block title %}Busca - CACo{% endblock %}
+{% block pagtitle%}Busca{%endblock%}
+{% block css %} <link href="/static/css/busca.css" rel="stylesheet"> {%endblock%}
+
+{% block content %}
+
+<div>
+    <form action="">
+        <div class="input-group">
+            <input type="text" class="form-control" name="q" placeholder="Busque no Site">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" value="Search">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+
+{% if query %}
+
+<!-- Noticias -->
+<h2 >Noticias</h2>
+<div class="resultados">
+    {% for noticia in noticias %}
+    <div style="margin-bottom:50px;">
+        <h2>
+            <a href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">{{ noticia.object.title }}</a>
+        </h2>
+        <p><span class="glyphicon glyphicon-time"></span> {{ noticia.object.time|date:"D d M Y" }} {{ noticia.time|time:"H:i" }}</p>
+        {% if noticia.object.image %}
+        <hr>
+        <img class="img-responsive" src="{{noticia.object.image.url}}" alt="">
+        <hr>
+        {%endif%}
+        <p>{{noticia.object.content|truncatewords_html:70|safe}}</p>
+        <a class="btn btn-primary" href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        <hr>
+    </div>
+    {% empty %}
+    <p>Nenhuma notícia encontrada.</p>
+    {% endfor %}
+    {% if mais_noticias %}
+    <div class="text-right">
+        <a class="btn btn-primary"href="busca/noticia?q={{query}}">
+            Ver mais resultados em Notícias<span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+
+<!-- Atas -->
+<h2 >Atas</h2>
+<div class="resultados">
+    {% for ata in atas %}
+    <div style="margin-bottom:50px;">
+        <h2>
+            <a href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">{{ ata.object.title }}</a>
+        </h2>
+        <p><span class="glyphicon glyphicon-time"></span> {{ ata.object.time|date:"D d M Y" }} {{ ata.object.time|time:"H:i" }}</p>
+
+        <p>{{ata.object.content|truncatewords_html:40|safe}}</p>
+        <a class="btn btn-primary" href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        <hr>
+    </div>
+    {% empty %}
+    <p>Nenhuma ata encontrada.</p>
+    {% endfor %}
+    {% if mais_atas %}
+    <div class="text-right">
+        <a class="btn btn-primary" href="busca/ata?q={{query}}">
+            Ver mais resultados em Atas<span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+
+
+<!-- Páginas -->
+<h2>Páginas</h2>
+<div class="resultados">
+    {% for pagina in paginas %}
+    <div style="margin-bottom:50px;">
+        <h2>
+            <a href="{{ URL_BASE }}{{pagina.object.url}}">{{ pagina.object.title }}</a>
+        </h2>
+
+        <p>{{pagina.object.content|truncatewords_html:70|safe}}</p>
+        <a class="btn btn-primary" href="{{ URL_BASE }}{{pagina.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        <hr>
+    </div>
+
+    {% empty %}
+    <p>Nenhuma Página encontrada.</p>
+    {% endfor %}
+    {% if mais_paginas %}
+    <div class="text-right">
+        <a class="btn btn-primary" href="busca/pagina?q={{query}}">
+            Ver mais resultados em Páginas<span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block title %}Institucional{% endblock %}
+{% block pagtitle %}Institucional - CACo{% endblock %}
+{%block content%}
+<p>
+<h4> <a href="atas"> Atas de reuniões do CACo</a></h4>
+<hr>
+</p>
+{% for page in pages %}
+	<a href="{{ URL_BASE }}{{page.url}}">
+	<p>
+	<h4>  {{page.title}}</h4>	
+	{% if page.banner %}
+        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">        
+    {%endif%}
+    <hr>
+	</p>
+	</a>
+{% endfor %}
+<p>
+<h4> <a href="http://www.caco.ic.unicamp.br/arquivos/web/EstatutoCACo.pdf">Estatuto</a></h4>
+<hr>
+</p>
+{% endblock %}
