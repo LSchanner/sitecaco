@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url('^bancodeprovas',views.BancoView),
 
     #Busca em atas,páginas e notícias
-    url(r'^busca$',views.BuscaView),
+    url(r'^busca/$',views.BuscaView),
 
     #Busca em uma das três cartegorias
     url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$',views.BuscaCartegoriaView),
