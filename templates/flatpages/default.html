@@ -5,8 +5,16 @@
 {% block script%} 
 <script>
     $(document).ready(function(){
+    // faz todas as imagems em flatpages responsivas
         $('img').addClass('img-responsive');
+
+    // essa id é usada para adicionar o email de forma a 
+    // proteger de crawlers de listas de spam
+        $('#endereco').html("caco" + "@" + 
+            "hueichue".substring(3,5) + ".unicamp.br");
+
     });
+    
 </script>
 {% endblock %}
 {% block content %}
