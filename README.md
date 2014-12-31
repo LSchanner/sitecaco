@@ -1,5 +1,8 @@
 # Site do CACo
 
+Este é o código do novo site do CACo, servido na url www.caco.ic.unicamp.br
+Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir features. \
+
 ## Instalação
 ### requerimentos do sistema
 * python3
@@ -14,7 +17,7 @@
 
 ### procedimento
 clone o repositório,  
-crie o sitecaco/local_settings.py com o seguinte conteúdo:
+crie o arquivo sitecaco/local_settings.py com o seguinte conteúdo:
 
 
 
