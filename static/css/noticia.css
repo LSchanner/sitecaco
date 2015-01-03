@@ -4,3 +4,10 @@
     border-top:2px solid #ccc;
     border-left:2px solid #ccc;
 }
+.time {
+    background-color:#ddd;
+    padding:5px;
+    border-bottom:solid 2px #aaa;
+    margin-bottom:10px;
+}
+

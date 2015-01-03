@@ -15,9 +15,9 @@
 
 <!-- Titulo -->
 <h1>{{post.title}}</h1>
-<hr>
-<p><span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}</p>
-<hr>
+<div class="time">
+    Adicionado em <span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}
+</div>
 {% if post.image %}
 <img class="img-responsive" src="{{post.image.url}}" alt="">
 <hr>
@@ -41,17 +41,17 @@
 <!-- Comentários  -->
 {% if comments %}
 {% for comment in comments %}
-    <div class="comentario media">
-        <div class="media-body">
-            <h4 class="media-heading">{{comment.author}}
-                <small>{{ comment.time|date:"D d M Y" }} {{ comment.time|time:"H:i" }}</small>
-            </h4>
-            <p>
-            {{comment.content|linebreaks}}
-            </p>
-        </div>
+<div class="comentario media">
+    <div class="media-body">
+        <h4 class="media-heading">{{comment.author}}
+            <small>{{ comment.time|date:"D d M Y" }} {{ comment.time|time:"H:i" }}</small>
+        </h4>
+        <p>
+        {{comment.content|linebreaks}}
+        </p>
     </div>
-    {%endfor%}
+</div>
+{%endfor%}
 {% endif %}
 
 

@@ -5,8 +5,8 @@
 
 
 {% block css %} 
-                {{ block.super }}
-                <link href="/static/css/noticias.css" rel="stylesheet">
+{{ block.super }}
+<link href="/static/css/noticias.css" rel="stylesheet">
 {% endblock %}
 
 
@@ -17,11 +17,13 @@
     <h2>
         <a href="{{ URL_BASE }}/noticia/{{post.id}}">{{ post.title }}</a>
     </h2>
-    <p><span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}</p>
+        <div class="time">
+            Adicionado em <span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}
+            </div>
     {% if post.image %}
-        <hr>
-        <img class="img-responsive" src="{{post.image.url}}" alt="">
-        <hr>
+    <hr>
+    <img class="img-responsive" src="{{post.image.url}}" alt="">
+    <hr>
     {%endif%}
     <p>{{post.content|truncatewords_html:70|safe}}</p>
     <a class="btn btn-primary" href="{{ URL_BASE }}/noticia/{{post.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -35,14 +37,14 @@
 <ul class="pager">
     {% if posts|length == 10  %}
     <li class="previous">
-        <a href="{{ URL_BASE }}/noticias/{{pag|add:"1" }}">&larr; Mais Antigas</a>
+    <a href="{{ URL_BASE }}/noticias/{{pag|add:"1" }}">&larr; Mais Antigas</a>
     </li>
     {% endif %}
     {% if pag > 1 %}
     <li class="next">
-        <a href="{{ URL_BASE }}/noticias/{{pag|add:"-1" }}">Mais Novas &rarr;</a>
+    <a href="{{ URL_BASE }}/noticias/{{pag|add:"-1" }}">Mais Novas &rarr;</a>
     </li>
     {% endif %}
 </ul>
 
- {% endblock %}
+{% endblock %}
