@@ -15,4 +15,5 @@ a:hover {
 
 .item:hover{
     margin-left:15px;
+    margin-right:-15px;
 }
