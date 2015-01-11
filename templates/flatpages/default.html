@@ -1,20 +1,14 @@
 {% extends "layouts/base.html" %}
 
-{% block title %}{{flatpage.title}} | CACo{% endblock %}
-{% block pagtitle%}{{flatpage.title}}{%endblock%}
+{% block title %}{{flatpage.title}} {% endblock %}
+{% block pagtitle%}{{flatpage.title}} | CACo{%endblock%}
 {% block script%} 
 <script>
     $(document).ready(function(){
     // faz todas as imagems em flatpages responsivas
         $('img').addClass('img-responsive');
 
-    // essa id é usada para adicionar o email de forma a 
-    // proteger de crawlers de listas de spam
-        $('#endereco').html("caco" + "@" + 
-            "hueichue".substring(3,5) + ".unicamp.br");
-
-    });
-    
+     });
 </script>
 {% endblock %}
 {% block content %}
