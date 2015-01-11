@@ -3,16 +3,19 @@
 {% block pagtitle %}Eventos - CACo{% endblock %}
 {%block content%}
 
+{% block css %} 
+    <link href="/static/css/itens.css" rel="stylesheet">
+{% endblock %}
+
 {% for page in pages %}
-	<a href="{{ URL_BASE }}{{page.url}}">
-	<p>
-	<h4> {{page.title}}</h4>	
-	{% if page.banner %}
+<a href="{{ URL_BASE }}{{page.url}}">
+    <div class="item">
+        <h4><strong> {{page.title}}</strong></h4>	
+        {% if page.banner %}
         <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width:100%;">        
-    {%endif%}
-    <hr>
-	</p>
-	</a>
+        {%endif%}
+    </div>
+</a>
 {% endfor %}
 
 {% endblock %}

@@ -1,24 +1,27 @@
 {% extends "layouts/base.html" %}
 {% block title %}Serviços{% endblock %}
 {% block pagtitle %}Serviços - CACo{% endblock %}
+
+{% block css %} 
+    <link href="/static/css/itens.css" rel="stylesheet">
+{% endblock %}
+
 {%block content%}
- <a href="{{ URL_BASE }}/bancodeprovas">
-	<p>
-	<h4>Banco De Provas</h4>	
-   <hr>
-	</p>
+<a href="{{ URL_BASE }}/bancodeprovas">
+    <div class="item">
+    <h4>Banco De Provas</h4>	
+    </div>
 </a>
 
 {% for page in pages %}
-    <a href="{{ URL_BASE }}{{page.url}}">
-	<p>
-	<h4>  {{page.title}}</h4>	
-	{% if page.banner %}
+<a href="{{ URL_BASE }}{{page.url}}">
+    <div class="item">
+        <h4>  {{page.title}}</h4>	
+        {% if page.banner %}
         <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">        
-    {%endif%}
-    <hr>
-	</p>
-	</a>
+        {%endif%}
+    </div>
+</a>
 {% endfor %}
 
 {% endblock %}
