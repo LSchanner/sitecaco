@@ -1,32 +1,33 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-import sitecaco.views as views
 from django.conf import settings
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 
+#Todas as views estão contidas nesse módulo
+from sitecaco.views import *
 
 urlpatterns = patterns('',
 
     #urls do site
-    url(r'^$',views.HomeView),
-    url(r'^institucional/$' ,views.InstitucionalView),
-    url(r'^eventos/$' ,views.EventosView),
-    url(r'^servicos/$' ,views.ServicosView),
-    url(r'^institucional/atas/(?P<pag>[0-9]*)' ,views.AtasView),
-    url(r'^institucional/ata/(?P<id>[0-9]*)' ,views.AtaView),
-    url(r'^noticias/(?P<pag>[0-9]*)', views.NoticiasView),
-    url(r'^noticia/(?P<id>[0-9]*)', views.NoticiaView),
-    url(r'^produtos/(?P<id>[0-9]*)' ,views.ProdutosView),
+    url(r'^$', cms.HomeView),
+    url(r'^institucional/$', cms.InstitucionalView),
+    url(r'^eventos/$', cms.EventosView),
+    url(r'^servicos/$', cms.ServicosView),
+    url(r'^institucional/atas/(?P<pag>[0-9]*)', cms.AtasView),
+    url(r'^institucional/ata/(?P<id>[0-9]*)', cms.AtaView),
+    url(r'^noticias/(?P<pag>[0-9]*)', cms.NoticiasView),
+    url(r'^noticia/(?P<id>[0-9]*)', cms.NoticiaView),
+    url(r'^produtos/(?P<id>[0-9]*)', cms.ProdutosView),
 
     #Banco de Provas
-    url('^bancodeprovas',views.BancoView),
+    url('^bancodeprovas', banco_provas.BancoView),
 
     #Busca em atas,páginas e notícias
-    url(r'^busca/$',views.BuscaView),
+    url(r'^busca/$', busca.BuscaView),
 
     #Busca em uma das três cartegorias
-    url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$',views.BuscaCartegoriaView),
+    url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$', busca.BuscaCartegoriaView),
 
     #urls da interface de admin
     url(r'^admin/', include(admin.site.urls)),
