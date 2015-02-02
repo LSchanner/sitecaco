@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^produtos/(?P<id>[0-9]*)', cms.ProdutosView),
 
     #Banco de Provas
-    url('^bancodeprovas', banco_provas.BancoView),
+    url('^bancodeprovas/', banco_provas.BancoView),
 
     #Busca em atas,páginas e notícias
     url(r'^busca/$', busca.BuscaView),
@@ -29,9 +29,13 @@ urlpatterns = patterns('',
     #Busca em uma das três cartegorias
     url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$', busca.BuscaCartegoriaView),
 
+    #Ouvidoria
+    url(r'^contato/ouvidoria/', ouvidoria.view),
+
     #urls da interface de admin
     url(r'^admin/', include(admin.site.urls)),
     )
+
 
 
 if settings.DEBUG:
