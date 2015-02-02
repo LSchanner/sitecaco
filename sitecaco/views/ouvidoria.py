@@ -11,8 +11,9 @@ def view(request):
         return HttpResponse(t.render(c))
 
     send_mail(request.POST['subject'], request.POST['message'] ,
-            'ouvidoria@caco.ic.unicamp.br', ['caco@ic.unicamp.br'], fail_silently=False)
+            request.POST['email'], ['caco@ic.unicamp.br'])
 
+    t = loader.get_template('obrigado.html')
     return HttpResponse(t.render(c))
 
 
