@@ -10,8 +10,13 @@ def view(request):
     if request.method == 'GET':
         return HttpResponse(t.render(c))
 
-    send_mail(request.POST['subject'], request.POST['message'] ,
-            request.POST['email'], ['caco@ic.unicamp.br'])
+    header = ""
+    if request.POST['email']:
+        header = " email para resposta:" + request.POST['email'] + \
+                "\n\n---------------------------------------------\n\n"
+
+    send_mail("Ouvidoria: " + request.POST['subject'], header + request.POST['message'] ,
+            "caco@ic.unicamp.br", ['caco@ic.unicamp.br'])
 
     t = loader.get_template('obrigado.html')
     return HttpResponse(t.render(c))
