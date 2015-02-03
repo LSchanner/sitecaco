@@ -8,9 +8,9 @@
 {% block content %}
 
 <div>
-    <form action="{{URL_BASE}}/busca/ata/">
+    <form action="{{URL_BASE}}/busca/noticia/">
         <div class="input-group">
-            <input type="text" class="form-control" name="q" placeholder="Busque em Atas">
+            <input type="text" class="form-control" name="q" placeholder="Busque em Notícias">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" value="Search">
                     <span class="glyphicon glyphicon-search"></span>
@@ -27,16 +27,16 @@
 <h2 >Notícias</h2>
 <div class="resultados">
     {% for noticia in page.object_list %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">{{ noticia.object.title }}</a>
         </h2>
         <p><span class="glyphicon glyphicon-time"></span> {{ noticia.object.time|date:"D d M Y" }} {{ noticia.object.time|time:"H:i" }}</p>
 
         <p>{{noticia.object.content|truncatewords_html:70|safe}}</p>
+        <hr>
         <a class="btn btn-primary" href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
     </div>
     {% empty %}
     <p>Nenhuma notícia encontrada.</p>

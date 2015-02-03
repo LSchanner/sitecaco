@@ -28,16 +28,16 @@
 <h2 >Atas</h2>
 <div class="resultados">
     {% for ata in page.object_list %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">{{ ata.object.title }}</a>
         </h2>
         <p><span class="glyphicon glyphicon-time"></span> {{ ata.object.time|date:"D d M Y" }} {{ ata.object.time|time:"H:i" }}</p>
 
         <p>{{ata.object.content|truncatewords_html:40|safe}}</p>
+        <hr>
         <a class="btn btn-primary" href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
     </div>
     {% empty %}
     <p>Nenhuma ata encontrada.</p>
