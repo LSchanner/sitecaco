@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^produtos/(?P<id>[0-9]*)', cms.ProdutosView),
 
     #Banco de Provas
+    url('^bancodeprovas/enviar', banco_provas.enviar),
     url('^bancodeprovas/', banco_provas.BancoView),
 
     #Busca em atas,páginas e notícias
