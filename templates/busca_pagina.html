@@ -26,15 +26,15 @@
 <h2 >Páginas</h2>
 <div class="resultados">
     {% for pagina in page.object_list %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}{{pagina.object.url}}">{{ pagina.object.title }}</a>
         </h2>
 
         <p>{{pagina.object.content|truncatewords_html:70|safe}}</p>
+        <hr>
         <a class="btn btn-primary" href="{{ URL_BASE }}{{pagina.object.url}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
     </div>
     {% empty %}
     <p>Nenhuma página encontrada.</p>

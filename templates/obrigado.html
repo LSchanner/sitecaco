@@ -1,18 +1,14 @@
 {% extends "layouts/base.html" %}
 {% load bootstrap_tags %}
 
-{% block title %}Ouvidoria{% endblock %}
-{% block pagtitle%}Ouvidoria - CACo{%endblock%}
-{% block css %} <link href="/static/css/ouvidoria.css" rel="stylesheet"> {%endblock%}
+{% block title %}Obrigado{% endblock %}
+{% block pagtitle%}Obrigado - CACo{%endblock%}
+{% block css %} <link href="/static/css/obrigado.css" rel="stylesheet"> {%endblock%}
 
 {% block content %}
 
 <p style="font-size:18px;">
-Obrigado por entrar em contato. 
-<br>
-
-Se você deixou um email, em breve responderemos sua mensagem.
-    
+{{ mensagem }}   
 </p>
 
 

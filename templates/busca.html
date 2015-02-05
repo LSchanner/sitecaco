@@ -27,7 +27,7 @@
 <h2 >Noticias</h2>
 <div class="resultados">
     {% for noticia in noticias %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">{{ noticia.object.title }}</a>
         </h2>
@@ -38,9 +38,9 @@
         <hr>
         {%endif%}
         <p>{{noticia.object.content|truncatewords_html:70|safe}}</p>
+        <hr>
         <a class="btn btn-primary" href="{{ URL_BASE }}/noticia/{{noticia.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
     </div>
     {% empty %}
     <p>Nenhuma notícia encontrada.</p>
@@ -59,16 +59,16 @@
 <h2 >Atas</h2>
 <div class="resultados">
     {% for ata in atas %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">{{ ata.object.title }}</a>
         </h2>
         <p><span class="glyphicon glyphicon-time"></span> {{ ata.object.time|date:"D d M Y" }} {{ ata.object.time|time:"H:i" }}</p>
 
         <p>{{ata.object.content|truncatewords_html:40|safe}}</p>
+        <hr>
         <a class="btn btn-primary" href="{{ URL_BASE }}/institucional/ata/{{ata.object.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-        <hr>
     </div>
     {% empty %}
     <p>Nenhuma ata encontrada.</p>
@@ -88,15 +88,14 @@
 <h2>Páginas</h2>
 <div class="resultados">
     {% for pagina in paginas %}
-    <div style="margin-bottom:50px;">
+    <div class="item">
         <h2>
             <a href="{{ URL_BASE }}{{pagina.object.url}}">{{ pagina.object.title }}</a>
         </h2>
 
         <p>{{pagina.object.content|truncatewords_html:70|safe}}</p>
-        <a class="btn btn-primary" href="{{ URL_BASE }}{{pagina.object.url}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
-
         <hr>
+        <a class="btn btn-primary" href="{{ URL_BASE }}{{pagina.object.url}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 
     {% empty %}

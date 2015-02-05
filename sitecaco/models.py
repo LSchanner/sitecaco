@@ -94,6 +94,7 @@ class Prova(models.Model):
     semestre = models.CharField(max_length=10)
     professor = models.CharField(max_length=50,blank=True)
     tipo = models.CharField(max_length=15)
+    aprovado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.materia + " " + self.tipo + " " + self.professor + " " +  self.semestre

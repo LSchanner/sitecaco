@@ -19,6 +19,12 @@ def view(request):
             "caco@ic.unicamp.br", ['caco@ic.unicamp.br'])
 
     t = loader.get_template('obrigado.html')
+    c['mensagem'] = """
+            Obrigado por entrar em contato.
+            <br>
+            Se você deixou um email, em breve responderemos sua mensagem.
+            """
+
     return HttpResponse(t.render(c))
 
 

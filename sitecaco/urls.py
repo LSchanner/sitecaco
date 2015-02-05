@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^produtos/(?P<id>[0-9]*)', cms.ProdutosView),
 
     #Banco de Provas
+    url('^bancodeprovas/enviar', banco_provas.enviar),
     url('^bancodeprovas/', banco_provas.BancoView),
 
     #Busca em atas,páginas e notícias
@@ -30,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$', busca.BuscaCartegoriaView),
 
     #Ouvidoria
-    url(r'^contato/ouvidoria/', ouvidoria.view),
+    url(r'^contato/', ouvidoria.view),
 
     #urls da interface de admin
     url(r'^admin/', include(admin.site.urls)),
