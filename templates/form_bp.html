@@ -15,7 +15,7 @@ Utilize o formulário abaixo para enviar provas ao banco de provas. As submissõ
 Os campos marcados com "*" são obrigatórios.
 </p>
 <div>
-    <form method="POST" >{% csrf_token %}
+    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
         <div class="form-group">
             <label for="subject">Matéria *</label>
             <input type="text" class="form-control" name="materia" placeholder="Ex: ma111">

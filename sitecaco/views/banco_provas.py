@@ -32,7 +32,7 @@ def enviar(request):
 
 
     # a submissão não possui todos os dados obrigatórios
-    if not (sub[0] and sub[1] and request.POST['prova']):
+    if not (sub[0] and sub[1] and request.FILES['prova']):
         t = loader.get_template('form_bp.html')
         c['erro'] = True
         return HttpResponse(t.render(c))
@@ -46,7 +46,7 @@ def enviar(request):
 
     # salva a prova
     prova = Prova(materia = sub[0], tipo = sub[1], semestre = sub[2],
-            professor = sub[3], file = request.POST['prova'],
+            professor = sub[3], file = request.FILES['prova'],
             aprovado = False)
 
     prova.save()
@@ -67,7 +67,6 @@ def enviar(request):
 
     t = loader.get_template('obrigado.html')
     return HttpResponse(t.render(c))
-
 
 
 # Implementa a busca no banco de provas. Para entender leia a documentação sobre objetos Q em django
