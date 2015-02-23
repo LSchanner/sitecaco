@@ -29,7 +29,7 @@ Se preferir, você também pode entrar em contato conosco através do e-mail:
 Ou utilizar o formulário abaixo para mandar uma mensagem para o CACo sem precisar se identificar. 
 </p>
 <div>
-    <form method="POST" action="{{URL_BASE}}/contato">{% csrf_token %}
+    <form method="POST" action="{{URL_BASE}}/contato/">{% csrf_token %}
         <div class="form-group">
             <label for="subject">Email (opcional)</label>
             <input type="text" class="form-control" name="email" placeholder="Email (opcional)">
