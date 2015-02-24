@@ -5,6 +5,9 @@
 {% block css %} <link href="/static/css/banco.css" rel="stylesheet"> {%endblock%}
 
 {% block content %}
+<p>
+    Sabe aquele seu livro que você nunca mais vai usar? Ou aquele capitulo inteiro que voce fotocopiou para poder fazer uma prova e agora vai jogar fora? Então, esse é o objetivo do Banco de Livros do CACo, reunir todo esse material para que ele possa ser util para mais pessoas! Contribua deixando o seu livro em nosso armário e nos avisando quando retirar algum.
+</p>
 
 <div>
     <form action="" class="form_bp">
@@ -31,6 +34,7 @@
                 <th>Edição</th>
                 <th>Disponível</th>
                 <th>Quantidade</th>
+                <th>Observações</td>
             </tr>
         </thead>
         <tbody>
@@ -45,6 +49,7 @@
                     <td>Não</td>
                 {% endif %}
                 <td>{{resultado.quantidade}}</td>
+                <td>{{resultado.observacao}}</td>
             </tr>
             {% endfor %}
         </tbody>

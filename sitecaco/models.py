@@ -103,10 +103,10 @@ class Prova(models.Model):
 class Livro(models.Model):
     nome = models.CharField(max_length=150)
     autor = models.CharField(max_length=150)
-    edicao = models.CharField(max_length=50)
-    observacao = models.TextField()
-    disponivel = models.BooleanField(default = True)
+    edicao = models.CharField(max_length=3)
+    observacao = models.CharField(max_length=150,blank=True)
+    disponivel = models.BooleanField(default=True)
     quantidade = models.SmallIntegerField(default = 1)
 
     def __str__(self):
-        return self.nome + " " + self.autor + " " + self.edicao + " edição "
+        return self.nome + ", " + self.autor + ", " + self.edicao + " edição."
