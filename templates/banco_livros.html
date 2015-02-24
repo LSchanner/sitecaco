@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Banco de Livros - CACo{% endblock %}
+{% block pagtitle%}Banco de Livros{%endblock%}
+{% block css %} <link href="/static/css/banco.css" rel="stylesheet"> {%endblock%}
+
+{% block content %}
+
+<div>
+    <form action="" class="form_bp">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Busque no Banco de Livros">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+
+{% if resultados %}
+<h3> Resultados </h3>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Autor</th>
+                <th>Edição</th>
+                <th>Disponível</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{resultado.nome}}</td>
+                <td>{{resultado.autor}}</td>
+                <td>{{resultado.edicao}} edição</td>
+                {% if resultado.disponivel %}
+                    <td>Sim</td>
+                {% else %}
+                    <td>Não</td>
+                {% endif %}
+                <td>{{resultado.quantidade}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
