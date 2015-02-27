@@ -33,7 +33,6 @@
                 <th>Autor</th>
                 <th>Edição</th>
                 <th>Disponível</th>
-                <th>Quantidade</th>
                 <th>Observações</td>
             </tr>
         </thead>
@@ -48,7 +47,6 @@
                 {% else %}
                     <td>Não</td>
                 {% endif %}
-                <td>{{resultado.quantidade}}</td>
                 <td>{{resultado.observacao}}</td>
             </tr>
             {% endfor %}

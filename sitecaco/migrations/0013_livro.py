@@ -14,13 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Livro',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, primary_key=True, auto_created=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('nome', models.CharField(max_length=150)),
                 ('autor', models.CharField(max_length=150)),
                 ('edicao', models.CharField(max_length=3)),
-                ('observacao', models.CharField(blank=True, max_length=150)),
+                ('observacao', models.CharField(max_length=200)),
                 ('disponivel', models.BooleanField(default=True)),
-                ('quantidade', models.SmallIntegerField(default=1)),
             ],
             options={
             },

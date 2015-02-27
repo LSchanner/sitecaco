@@ -104,9 +104,8 @@ class Livro(models.Model):
     nome = models.CharField(max_length=150)
     autor = models.CharField(max_length=150)
     edicao = models.CharField(max_length=3)
-    observacao = models.CharField(max_length=150,blank=True)
+    observacao = models.CharField(max_length=200,blank=True)
     disponivel = models.BooleanField(default=True)
-    quantidade = models.SmallIntegerField(default = 1)
 
     def __str__(self):
         return self.nome + ", " + self.autor + ", " + self.edicao + " edição."
