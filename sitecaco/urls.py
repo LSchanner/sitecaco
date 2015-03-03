@@ -33,6 +33,9 @@ urlpatterns = patterns('',
     #Ouvidoria
     url(r'^contato/', ouvidoria.view),
 
+    #Banco de Livros
+    url(r'^bancodelivros/', banco_livro.LivroView),
+
     #urls da interface de admin
     url(r'^admin/', include(admin.site.urls)),
     )
@@ -48,5 +51,3 @@ if settings.DEBUG:
             'document_root': settings.STATIC_ROOT,
         }),
     )
-
-

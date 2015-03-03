@@ -10,7 +10,7 @@ Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir 
 #### libs de python (instale com pip)
 * django
 * pymysql
-* django-forms-bootstp
+* django-forms-bootstrap
 * django-haystack
 * pillow
 
@@ -26,7 +26,7 @@ crie o arquivo sitecaco/local_settings.py com o seguinte conteúdo:
     SECRET_KEY = "chave_aleatória_qualquer"
 
     DEBUG = True
-    TEMPLATE_DEBUG = True 
+    TEMPLATE_DEBUG = True
 
     # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
     DATABASES = {
@@ -43,9 +43,12 @@ crie o arquivo sitecaco/local_settings.py com o seguinte conteúdo:
         },
     }
 
+    #Email Console backend
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
     #URL Base, usado em todos os links absolutos do site
     URL_BASE = ""
+
 
 
 
@@ -58,6 +61,4 @@ depois, execute
     python3 manage.py runserver
 
 
-Qualquer problema, não hesite em contatar os administradores do repositório 
-
-
+Qualquer problema, não hesite em contatar os administradores do repositório
