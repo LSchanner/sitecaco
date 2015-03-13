@@ -108,4 +108,4 @@ class Livro(models.Model):
     disponivel = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.nome + ", " + self.autor + ", " + self.edicao + " edição."
+        return self.nome + ", " + self.autor + ", " + self.edicao + " edição," + "obs:" + self.observacao
