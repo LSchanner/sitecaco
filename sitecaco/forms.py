@@ -22,7 +22,7 @@ class CPFField(Field):
         11-digit number.
         """
         if value in EMPTY_VALUES:
-            return u''
+            return ''
         if not value.isdigit():
             value = re.sub("[-\.]", "", value)
         orig_value = value[:]
