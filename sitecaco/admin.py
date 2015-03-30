@@ -65,6 +65,7 @@ class AdminProva(admin.ModelAdmin):
 
 
 admin.site.register(Livro);
+admin.site.register(InscricaoFISL);
 admin.site.register(Prova,AdminProva)
 admin.site.register(Produto,AdminProduto)
 admin.site.register(Ata,AdminAta)

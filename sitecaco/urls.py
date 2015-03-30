@@ -36,6 +36,9 @@ urlpatterns = patterns('',
     #Banco de Livros
     url(r'^bancodelivros/', banco_livro.LivroView),
 
+    #Formulário de inscricao no fisl
+    url(r'^eventos/fisl/inscricao', inscricao_fisl.view),
+
     #urls da interface de admin
     url(r'^admin/', include(admin.site.urls)),
     )
