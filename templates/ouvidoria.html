@@ -4,6 +4,7 @@
 {% block title %}Contato{% endblock %}
 {% block pagtitle%}Contato - CACo{%endblock%}
 {% block css %} <link href="/static/css/ouvidoria.css" rel="stylesheet"> {%endblock%}
+{% block head %}<script src='https://www.google.com/recaptcha/api.js'></script> {%endblock%}
 
 {% block content %}
 
@@ -43,7 +44,8 @@ Ou utilizar o formulário abaixo para mandar uma mensagem para o CACo sem precis
             <label for="subject">Mensagem</label>
             <textarea class="form-control" name="message" rows="9" placeholder="Digite sua mensagem"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <div class="g-recaptcha" data-sitekey="6Lfa0AQTAAAAANlFO66xk5gRcYiPZ6xQhbhSK200"></div>
+        <button type="submit" class="btn btn-primary sbmt-btn">Enviar</button>
     </form>
 </div>
 
