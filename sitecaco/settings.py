@@ -83,6 +83,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+TIME_ZONE = "Brazil/East"
+
 #preprocessador de templates, adiciona URL_BASE ao contexto
 def urlbase(request):
     return {'URL_BASE': URL_BASE}
