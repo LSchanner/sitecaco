@@ -11,6 +11,17 @@
 
 
 {% block content %}
+<p>
+    Formulário de inscrição para a caravana do CACo no FISL 16. Lembramos que os alunos de Computação da UNICAMP tem preferência nas vagas, depois vem os alunos da UNICAMP e por último pessoas externas à comunidade da UNICAMP.
+</p>
+
+<p>
+    A atribuição das vagas para a caravana será por ordem de inscrição, respeitando-se as preferências descritas acima. Todos os campos do formulário são obrigatórios, exceto pelo RA.
+</p>
+
+<p>
+    Alertamos que não é necessário que o ingressante na nossa caravana se inscreva no FISL, tendo em vista que nós faremos a inscrição por ele.
+</p>
 
 <form role="form" method="POST">{% csrf_token %}
     {{ form|as_bootstrap }}
