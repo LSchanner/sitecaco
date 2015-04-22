@@ -8,7 +8,7 @@ import re
 def DV_maker(v):
     if v >= 2:
         return 11 - v
-        return 0
+    return 0
 
 #Field de CPF
 class CPFField(Field):
@@ -21,6 +21,7 @@ class CPFField(Field):
         Value can be either a string in the format XXX.XXX.XXX-XX or an
         11-digit number.
         """
+
         if value in EMPTY_VALUES:
             return ''
         if not value.isdigit():
