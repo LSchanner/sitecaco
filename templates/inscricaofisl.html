@@ -11,6 +11,11 @@
 
 
 {% block content %}
+{% if fechadas %}
+<p>
+As inscrições para a caravana para o FISL desse ano já foram fechadas.
+</p>
+{% else %}
 <p>
     Formulário de inscrição para a caravana do CACo no FISL 16. Lembramos que os alunos de Computação da UNICAMP tem preferência nas vagas, depois vem os alunos da UNICAMP e por último pessoas externas à comunidade da UNICAMP.
 </p>
@@ -27,6 +32,7 @@
     {{ form|as_bootstrap }}
     <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
+{% endif %}
 
 
 {% endblock %}
