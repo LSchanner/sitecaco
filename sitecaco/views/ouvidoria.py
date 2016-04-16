@@ -35,9 +35,12 @@ def view(request):
 
 
 def verify_recaptcha(request):
-    post_data = [('secret',RECAPTCHA_SECRET),
-            ('response',request.POST['g-recaptcha-response']),
-            ('remoteip',client_ip(request))]
+    try:
+        post_data = [('secret',RECAPTCHA_SECRET),
+                ('response',request.POST['g-recaptcha-response']),
+                ('remoteip',client_ip(request))]
+    except:
+        return False
 
     post_data = urllib.parse.urlencode(post_data).encode('utf-8')
     req = urllib.request.Request(
