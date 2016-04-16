@@ -30,19 +30,6 @@ class Ata(models.Model):
     def __str__(self):
         return str(self.title)
 
-class Comentario(models.Model):
-    noticia = models.ForeignKey(Noticia)
-    author = models.CharField(max_length=50)
-    time = models.DateTimeField(auto_now_add=True)
-    content = models.TextField()
-
-    class Meta:
-        ordering = ('time',)
-
-    def __str__(self):
-        return self.author + " no post " + self.noticia.title
-
-
 class Pagina(FlatPage):
     CARTEGORIAS = (
     ('Serviços','Serviços'),

@@ -24,20 +24,9 @@ def NoticiasView(request,pag=1):
 def NoticiaView(request,id):
     post = Noticia.objects.get(id = id)
 
-    # Formulário de comentários
-    if request.method == 'POST':
-        form = formComentario(request.POST)
-        if form.is_valid():
-            comment = Comentario(author=form.cleaned_data['author'],
-                    content=form.cleaned_data['content'], noticia=post)
-            comment.save()
-
-    comments = Comentario.objects.filter(noticia=post)
-    form = formComentario()
-
     t = loader.get_template('noticia.html')
 
-    c = RequestContext(request,{'post':post,'form':form,'comments':comments})
+    c = RequestContext(request,{'post':post})
     return HttpResponse(t.render(c))
 
 

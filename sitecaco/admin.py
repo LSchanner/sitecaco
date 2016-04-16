@@ -70,6 +70,5 @@ admin.site.register(Prova,AdminProva)
 admin.site.register(Produto,AdminProduto)
 admin.site.register(Ata,AdminAta)
 admin.site.register(Arquivo);
-admin.site.register(Comentario)
 admin.site.register(Noticia,AdminNoticia)
 admin.site.register(Pagina,AdminPagina)

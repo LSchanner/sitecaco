@@ -29,31 +29,5 @@
     <hr>
 </div>
 
-<div class="well">
-    <h4>Deixe seu comentário:</h4>
-    <form role="form" method="POST">{% csrf_token %}
-        {{ form|as_bootstrap }}
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</div>
-<hr>
-
-<!-- Comentários  -->
-{% if comments %}
-{% for comment in comments %}
-<div class="comentario media">
-    <div class="media-body">
-        <h4 class="media-heading">{{comment.author}}
-            <small>{{ comment.time|date:"D d M Y" }} {{ comment.time|time:"H:i" }}</small>
-        </h4>
-        <p>
-        {{comment.content|linebreaks}}
-        </p>
-    </div>
-</div>
-{%endfor%}
-{% endif %}
-
-
 
 {% endblock %}
