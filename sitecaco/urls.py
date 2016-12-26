@@ -1,5 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 from django.contrib import admin
+
 from django.conf import settings
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
@@ -7,9 +8,7 @@ from haystack.views import SearchView
 #Todas as views estão contidas nesse módulo
 from sitecaco.views import *
 
-
-urlpatterns = patterns('',
-
+urlpatterns = [
     #urls do site
     url(r'^$', cms.HomeView),
     url(r'^institucional/$', cms.InstitucionalView),
@@ -37,29 +36,18 @@ urlpatterns = patterns('',
     #Banco de Livros
     url(r'^bancodelivros/', banco_livro.LivroView),
 
-
     #urls da interface de admin
-    url(r'^admin/', include(admin.site.urls)),
-    )
+    url(r'^admin/', admin.site.urls),
+]
 
 
-if settings.INSCRICOES_FISL_ABERTAS:
-    urlpatterns += patterns('',
-        #Formulário de inscricao no fisl
-        url(r'^eventos/fisl/inscricao', inscricao_fisl.submit_form)
-        )
-else:
-    urlpatterns += patterns('',
-        #Formulário de inscricao no fisl
-        url(r'^eventos/fisl/inscricao', inscricao_fisl.inscricoes_fechadas)
-        )
 
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-    )
+# if settings.DEBUG:
+#     urlpatterns += patterns('',
+#         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+#             'document_root': settings.MEDIA_ROOT,
+#         }),
+#         url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+#             'document_root': settings.STATIC_ROOT,
+#         }),
+#     )
