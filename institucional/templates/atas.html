@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+
+
+{% block title %}Atas de reuniões{% endblock %}
+
+
+{% block content%}
+{% for ata in atas %}
+<a href="{{ URL_BASE }}/institucional/ata/{{ata.id}}">
+    <h4>
+        {{ ata.title }} <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+    </h4>
+</a>
+   
+   
+<hr>
+{% endfor %}
+
+
+<!-- Pager -->
+<ul class="pager">
+    {% if atas|length == 30  %}
+    <li class="previous">
+        <a href="{{ URL_BASE }}/institucional/atas/{{pag|add:"1" }}">&larr; Mais Antigas</a>
+    </li>
+    {% endif %}
+    {% if pag > 1 %}
+    <li class="next">
+        <a href="{{ URL_BASE }}/institucional/atas/{{pag|add:"-1" }}">Mais Novas &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+
+ {% endblock %}
