@@ -1,6 +1,6 @@
 # Site do CACo
 
-Este é o código do novo site do CACo, servido na url www.caco.ic.unicamp.br
+Este é o código do site do CACo, servido na url www.caco.ic.unicamp.br
 Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir features.
 
 ## Instalação
@@ -22,6 +22,7 @@ Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir 
 crie o arquivo `sitecaco/local_settings.py` com o seguinte conteúdo:
 
     import os
+
 
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     SECRET_KEY = "chave_aleatória_qualquer"
@@ -57,6 +58,10 @@ depois, execute
     python3 manage.py makemigrations
     python3 manage.py migrate
     python3 manage.py runserver
+
+para criar um usuário admin e poder logar em /admin/
+
+    python3 manage.py createsuperuser
 
 
 Qualquer problema, não hesite em contatar os administradores do repositório
