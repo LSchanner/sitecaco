@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from banco_de_livros.models import Livro
+
+
+admin.site.register(Livro)
