@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
+
 from noticias.models import Noticia
 
 def NoticiasView(request,pag=1):
@@ -8,9 +10,10 @@ def NoticiasView(request,pag=1):
         pag = 1
 
     posts = Noticia.objects.all()[(pag-1)*10  : pag * 10]
-    return render(request, 'noticias.html', {'posts': posts , 'pag': pag})
+    return render(request, 'noticias.html', {'posts': posts, 'pag': pag})
 
 def NoticiaView(request,id):
-    post = Noticia.objects.get(id = id)
-
-    return render(request, 'noticia.html', {'post':post})
+    if id:
+        get_object_or_404(Noticia, id = int(id))
+        return render(request, 'noticia.html', {'post': post})
+    raise Http404("Noticia inexistente")

@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
 from institucional.models import Ata
 from paginas.models import Pagina
@@ -21,6 +22,8 @@ def AtasView(request,pag):
 
 
 def AtaView(request,id):
-    ata = Ata.objects.get(id = id)
-
-    return render(request, 'atas.html', {'ata':ata})
+    if id:
+        ata = get_object_or_404(Ata, id = int(id))
+        return render(request, 'atas.html', {'ata':ata})
+    else:
+        raise Http404("Ata inexistente")
