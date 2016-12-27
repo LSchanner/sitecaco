@@ -1,6 +1,7 @@
 from django.db import models
 
 # Modelo de inscrição no FISL
+# Modelo de inscrição no FISL
 class InscricaoFISL(models.Model):
     generos = (
         ('M', 'M'),

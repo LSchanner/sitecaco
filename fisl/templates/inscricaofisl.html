@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+
+{% block title %}<a href="{{ URL_BASE }}/eventos/fisl/inscricao" >Inscrição Fisl</a>{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block css %} 
+{% endblock %}
+
+
+
+
+{% block content %}
+{% if fechadas %}
+<p>
+As inscrições para a caravana para o FISL desse ano já foram fechadas.
+</p>
+{% else %}
+<p>
+    Formulário de inscrição para a caravana do CACo no FISL 16. Lembramos que os alunos de Computação da UNICAMP tem preferência nas vagas, depois vem os alunos da UNICAMP e por último pessoas externas à comunidade da UNICAMP.
+</p>
+
+<p>
+    A atribuição das vagas para a caravana será por ordem de inscrição, respeitando-se as preferências descritas acima. Todos os campos do formulário são obrigatórios, exceto pelo RA.
+</p>
+
+<p>
+    Alertamos que não é necessário que o ingressante na nossa caravana se inscreva no FISL, tendo em vista que nós faremos a inscrição por ele.
+</p>
+
+<form role="form" method="POST">{% csrf_token %}
+    {{ form|as_bootstrap }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endif %}
+
+
+{% endblock %}
