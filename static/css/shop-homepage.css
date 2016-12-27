@@ -1,0 +1,60 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+
+
+.caption h4 {
+}
+
+
+/* hacks para fazer o aspect ratio fixo sem overflow. mais informações em 
+ * http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio */
+.thumbnail img {
+    width: 100%;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.thumbnail .img-container{
+    overflow:hidden;
+    max-height:100%;
+    width:100%;
+    display:inline-block;
+    position:relative;
+
+}
+.img-container:after {
+    padding-top:68%;
+    content:"";
+    display:block;
+}
+
+.ratings {
+    clear:both;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #10A32E;
+}
+
+.thumbnail {
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom:15px;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    overflow:hidden;
+    height:170px;
+    color: #333;
+}
+.thumbnail .price {
+    padding-right:9px;
+}
+
+footer {
+    margin: 50px 0;
+}

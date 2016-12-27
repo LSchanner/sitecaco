@@ -1,0 +1,12 @@
+.resultados {
+}
+
+.item {
+    background-color:#e2e2e2;
+    padding:4%;
+    padding-top:1px;
+    border-bottom:2px solid #ccc;
+    border-left:2px solid #ccc;
+    margin-bottom:50px;
+    margin-left:10px;
+}
