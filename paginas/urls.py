@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^servicos/$', views.ServicosView),
 
     # This is the url for flatpages
-    url(r'^', include('django.contrib.flatpages.urls')),
+    url(r'', include('django.contrib.flatpages.urls')),
 ]

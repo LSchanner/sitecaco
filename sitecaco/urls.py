@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Redirecionamento para páginas (Como sao mais abrangentes ficam por ultimo)
-    url(r'^', include('paginas.urls')),
+    url(r'', include('paginas.urls')),
 ]
 
 # if settings.DEBUG:
