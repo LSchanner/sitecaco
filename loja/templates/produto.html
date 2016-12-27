@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+{% block title %}{{produto.name}}{% endblock %}
+{% block pagtitle %}{{produto.name}} - Produtos - CACo{% endblock %}
+
+{%block css%} {%endblock%}
+{%block content%}
+
+<div class="thumbnail">
+	<img class="img-responsive" src="{{produto.imagem.url}}" alt="">
+	<div class="caption-full">
+		<h4 class="pull-right">R$ {{produto.price}}</h4>
+		<h4><a href="#">{{produto.name}}</a>
+		</h4>
+		<p>{{produto.description|safe}}</p>
+		</div>
+
+	</div>
+
+{% endblock %}
