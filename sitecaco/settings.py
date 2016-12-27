@@ -25,7 +25,7 @@ STATICFILES_FINDERS = (
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 SITE_ID = 1
 
@@ -48,7 +48,17 @@ INSTALLED_APPS = [
     'sitecaco',
     'haystack',
     'django.contrib.sites',
-    'django.contrib.flatpages'
+    'django.contrib.flatpages',
+
+    # Os apps internos
+    'banco_de_provas',
+    'noticias',
+    'loja',
+    'institucional',
+    'paginas',
+    'ouvidoria',
+    'fisl',
+    'banco_de_livros',
 ]
 
 MIDDLEWARE = [
@@ -101,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
+# https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -118,22 +128,12 @@ USE_TZ = True
 def urlbase(request):
     return {'URL_BASE': URL_BASE}
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-   "django.contrib.auth.context_processors.auth",
-   "django.core.context_processors.request",
-   "sitecaco.settings.urlbase"
-)
-
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_ROOT = os.path.join(ENV_PATH, 'static/');
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
-)
+# STATIC_ROOT = os.path.join(ENV_PATH, 'static/');
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
