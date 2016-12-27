@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}{{flatpage.title}} {% endblock %}
+{% block pagtitle%}{{flatpage.title}} | CACo{%endblock%}
+{% block script%} 
+<script>
+    $(document).ready(function(){
+    // faz todas as imagems em flatpages responsivas
+        $('img').addClass('img-responsive');
+
+     });
+</script>
+{% endblock %}
+{% block content %}
+
+{{flatpage.content|safe}}
+
+
+{% endblock %}
