@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+
+{% block title %}<a href="{{ URL_BASE }}/noticias" > Notícias</a>{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block css %} 
+<link href="/static/css/noticia.css" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<!-- Titulo -->
+<h1>{{post.title}}</h1>
+<div class="time">
+    Adicionado em <span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}
+</div>
+{% if post.image %}
+<img class="img-responsive" src="{{post.image.url}}" alt="">
+<hr>
+{% endif %}
+<!-- Conteudo -->
+
+<div class="conteudo">
+    {{post.content|safe}}
+    <hr>
+</div>
+
+
+{% endblock %}

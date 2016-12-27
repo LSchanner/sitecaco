@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Noticia(models.Model):
     user = models.ForeignKey(User, editable = False)
