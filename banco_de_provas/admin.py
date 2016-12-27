@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from banco_de_provas.models import Prova
+from banco_de_provas.forms import ProvaForm
+
+
+class AdminProva(admin.ModelAdmin):
+    form = ProvaForm
+    search_fields = ['materia','tipo','semestre','professor']
+
+
+admin.site.register(Prova, AdminProva)

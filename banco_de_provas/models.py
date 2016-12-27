@@ -1,5 +1,10 @@
 from django.db import models
 
+# Salva o arquivo com um nome regular
+def nomedoarquivo(instance,filename):
+    return("banco_de_provas/" +  '-'.join([instance.materia, instance.tipo,instance.semestre,instance.professor]) + filename[-4:])
+
+
 # Modelo do banco de provas
 class Prova(models.Model):
     file = models.FileField(upload_to=nomedoarquivo)
