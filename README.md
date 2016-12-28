@@ -1,6 +1,7 @@
 # Site do CACo
 
 Este é o código do site do CACo, servido na url www.caco.ic.unicamp.br
+
 Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir features.
 
 ## Instalação
@@ -14,7 +15,7 @@ Todos são bem-vindos a colaborar com o desenvolvimento, reportar bugs ou pedir 
 * django-haystack
 * pillow
 
-#### instalando com pip3
+#### instalando com pip
     pip3 install -r dependencies.txt
 
 
@@ -28,7 +29,6 @@ crie o arquivo `sitecaco/local_settings.py` com o seguinte conteúdo:
     SECRET_KEY = "chave_aleatória_qualquer"
 
     DEBUG = True
-    TEMPLATE_DEBUG = True
 
     # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
     DATABASES = {
@@ -39,16 +39,17 @@ crie o arquivo `sitecaco/local_settings.py` com o seguinte conteúdo:
     }
 
     # Search Engine
+    # https://django-haystack.readthedocs.io
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
         },
     }
 
-    #Email Console backend
+    # Email Console backend
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-    #URL Base, usado em todos os links absolutos do site
+    # URL Base, usado em todos os links absolutos do site
     URL_BASE = ""
 
     RECAPTCHA_SECRET = "o_segredo_do_recaptcha_do_google"
