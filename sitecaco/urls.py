@@ -35,11 +35,8 @@ urlpatterns += [
     url(r'^bancodelivros', include('banco_de_livros.urls')),
     # FISL
     url(r'^eventos/fisl/', include('fisl.urls')),
-    # Busca em atas,páginas e notícias (FALTA IMPLEMENTAR E TESTAR)
-    # url(r'^busca/$', busca.BuscaView),
-    # Busca em uma das três cartegorias  (FALTA IMPLEMENTAR E TESTAR)
-    # url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$', busca.BuscaCartegoriaView),
-
+    # Busca em atas,páginas e notícias
+    url(r'^busca', include('busca.urls')),
     # URLs da interface de admin
     url(r'^admin\/?', admin.site.urls),
 

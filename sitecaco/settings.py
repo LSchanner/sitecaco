@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     # Os apps internos
     'sitecaco',
+    'busca',
     'banco_de_provas',
     'noticias',
     'loja',
