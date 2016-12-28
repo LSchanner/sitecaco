@@ -9,7 +9,7 @@ from paginas.models import Pagina
 
 # HomePage
 def HomeView(request):
-    return redirect('./noticias')
+    return redirect('./noticias/')
 
 
 # Eventos

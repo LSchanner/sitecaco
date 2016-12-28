@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
-    'sitecaco',
-    'haystack',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    # 3rd part apps
+    'haystack',
+    'ckeditor',
 
     # Os apps internos
+    'sitecaco',
     'banco_de_provas',
     'noticias',
     'loja',
@@ -132,8 +134,11 @@ def urlbase(request):
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(ENV_PATH, 'static/');
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+STATIC_ROOT = os.path.join(ENV_PATH, 'static/');
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# WYSIWYG Editor configuration
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
