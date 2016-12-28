@@ -3,11 +3,11 @@
 {% block pagtitle %}Institucional - CACo{% endblock %}
 {%block content%}
 
-{% block css %} 
+{% block css %}
 <link href="/static/css/itens.css" rel="stylesheet">
 {% endblock %}
 
-<a href="atas">
+<a href="/institucional/atas">
     <div class="item">
         <h4>  Atas de reuniões do CACo</h4>
     </div>
@@ -17,9 +17,9 @@
 {% for page in pages %}
 <a href="{{ URL_BASE }}{{page.url}}">
     <div class="item">
-        <h4>  {{page.title}}</h4>	
+        <h4>  {{page.title}}</h4>
         {% if page.banner %}
-        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">        
+        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">
         {%endif%}
     </div>
 </a>

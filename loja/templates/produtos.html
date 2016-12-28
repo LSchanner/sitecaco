@@ -7,14 +7,14 @@
 
 <div class="row">
 {% for produto in produtos %}
-    
+
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
         <div class="img-container">
             <img src="{{produto.imagem.url}}" alt="">
         </div>
         <div class="caption">
-            <h4><a href="{{produto.id}}">{{produto.name}}</a>
+            <h4><a href="/produtos/{{produto.id}}">{{produto.name}}</a>
             </h4>
             <p style="clear:both;">{{produto.description|truncatewords_html:10|safe}}</p>
         </div>

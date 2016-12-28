@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^\/(?P<id>[0-9]*)', views.NoticiaView, name="Noticia"),
-    url(r'^s\/(?P<pag>[0-9]*)', views.NoticiasView, name="Noticias"),
+    url(r'^s\/?(?P<pag>[0-9]*)', views.NoticiasView, name="Noticias"),
 ]
