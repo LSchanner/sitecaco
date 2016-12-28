@@ -14,6 +14,6 @@ def NoticiasView(request,pag=1):
 
 def NoticiaView(request,id):
     if id:
-        get_object_or_404(Noticia, id = int(id))
+        post = get_object_or_404(Noticia, id = int(id))
         return render(request, 'noticia.html', {'post': post})
     raise Http404("Noticia inexistente")
