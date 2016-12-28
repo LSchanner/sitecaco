@@ -24,6 +24,6 @@ def AtasView(request,pag):
 def AtaView(request,id):
     if id:
         ata = get_object_or_404(Ata, id = int(id))
-        return render(request, 'atas.html', {'ata':ata})
+        return render(request, 'ata_template.html', {'ata':ata})
     else:
         raise Http404("Ata inexistente")

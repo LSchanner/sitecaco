@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.db.models import Q
+
+from banco_de_livros.models import Livro
 
 
 def LivroView(request):
