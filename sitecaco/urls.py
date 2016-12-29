@@ -37,6 +37,8 @@ urlpatterns += [
     url(r'^eventos/fisl/', include('fisl.urls')),
     # Busca em atas,páginas e notícias
     url(r'^busca', include('busca.urls')),
+    # Membros
+    url(r'^membros', include('membros.urls')),
     # URLs da interface de admin
     url(r'^admin\/?', admin.site.urls),
 

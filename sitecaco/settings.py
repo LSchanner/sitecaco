@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'ouvidoria',
     'fisl',
     'banco_de_livros',
+    'membros',
 ]
 
 MIDDLEWARE = [
