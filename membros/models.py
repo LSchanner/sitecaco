@@ -8,6 +8,10 @@ from unidecode import unidecode
 # Modelo de um Aluno
 # Cada aluno tem um token para gerar um página de confirmação para ele
 class Aluno(models.Model):
+    vinculo = (
+        ('Graduacao', 'Graduacao'),
+        ('Pós', 'Pós'),
+    )
     nome = models.CharField(max_length=100)
     ra = models.IntegerField(primary_key=True, unique=True)
     token = models.CharField(max_length = 37)
@@ -15,6 +19,7 @@ class Aluno(models.Model):
     email_pessoal = models.EmailField()
     nascimento = models.DateField()
     cpf = models.CharField(max_length=20)
+    vinculo = models.CharField(max_length=50,choices=vinculo)
 
     def __str__(self):
         return str(self.ra) + ' - ' + self.nome

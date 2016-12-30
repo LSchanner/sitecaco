@@ -9,27 +9,23 @@ import re
 
 # Form de inscrição
 class FormInscricaoMembros(forms.ModelForm):
+    vinculo = (
+        ('Graduacao', 'Graduacao'),
+        ('Pós', 'Pós'),
+    )
     nome = forms.CharField(label='Seu Nome', max_length=150)
     ra = forms.IntegerField(label='Seu RA')
-    email_pessoal = forms.EmailField(label='Algum email para contato que não seja academico')
+    email_pessoal = forms.EmailField(label='Email')
     nascimento = forms.DateField(input_formats=
                                                 ['%d-%m-%Y',      # '23-11-1994'
                                                  '%d/%m/%Y'],     # '23/11/1994'
-                                )
-    cpf = forms.CharField(label='CPF')
+                                 label='Data de Nascimento',
+                                 help_text='ex: 23/11/1994'
+                                 )
+    cpf = forms.CharField(label='CPF', help_text='Sem pontos e espaco, apenas os números')
+    vinculo = forms.ChoiceField(vinculo)
 
     class Meta:
         model = Aluno
-        fields = ['nome', 'ra', 'email_pessoal', 'nascimento', 'cpf']
-        labels = {
-            'nome': 'Nome Completo',
-            'ra': 'RA',
-            'email_pessoal': 'Email',
-            'nascimento': 'Data de Nascimento',
-            'cpf': 'CPF',
-        }
-        help_texts = {
-            'nascimento': 'ex: 23/11/1994',
-            'cpf': 'Sem pontos e espaco, apenas os números',
-        }
+        fields = ['nome', 'ra', 'email_pessoal', 'nascimento', 'cpf', 'vinculo']
         error_messages =  {x:{"required":"Este campo é obrigatório"} for x in fields}
