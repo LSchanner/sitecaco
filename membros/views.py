@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 from membros.models import Aluno
 from membros.forms import FormInscricaoMembros
@@ -6,6 +8,8 @@ from membros.forms import FormInscricaoMembros
 from sitecaco.tools.token import generateToken
 
 
+URL = 'http://127.0.0.1:8000/'
+FROM_EMAIL = 'CACo <caco@ic.unicamp.br>'
 inscricao_confirmada = """
     Você completou sua inscrição, um email foi mandado ao email academico do IC para que você confirme sua identidade.
 
@@ -13,7 +17,8 @@ inscricao_confirmada = """
     """
 
 
-# Home dos membros (pensei em listar os membros inscritos)
+# Home dos membros
+# Lista todos os membros do CACo
 def homeMembros(request):
     c = dict()
     membros = Aluno.objects.filter(confirmado=True)
@@ -38,8 +43,27 @@ def forms_incricao_membros(request):
         a.token = generateToken(a.nome + str(a.ra))
         a.save()
 
-        # Falta enviar o email para o usuário em a.email_ic
-        
+        # Para envio do email
+        header = '[CACo] Confirmação da Inscricao para Membro'
+        link = URL + 'membros/confirmacao/' + str(a.token)
+        message = 'Olá, essa é uma mensagem automatica para envio do link de inscricao de membro do CACo. \nO link para sua confirmação é: %s\nCaso tenha recebido esse email por engano, por favor, apenas desconsidere a mensagem <3\n\n' % link
+
+        # Faz um novo email
+        email = EmailMessage(
+            header,
+            message,
+            FROM_EMAIL,
+            [a.email_ic()]
+        )
+
+        # Caso esteja no modo debug, nao envia o email, apenas imprime na tela
+        if settings.DEBUG:
+            print('TO: ' + str(a))
+            print(header)
+            print(message)
+        else:
+            email.send()
+
         return render(request, 'obrigado.html', {"mensagem": inscricao_confirmada})
 
     return render(request, 'inscricaoMembros.html', {"form": form})
