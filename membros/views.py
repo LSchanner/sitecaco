@@ -18,7 +18,7 @@ inscricao_confirmada = """
 
 
 # Home dos membros
-# Lista todos os membros do CACo
+# Lista todos os membros do CACow
 def homeMembros(request):
     c = dict()
     membros = Aluno.objects.filter(confirmado=True)
@@ -58,7 +58,7 @@ def forms_incricao_membros(request):
 
         # Caso esteja no modo debug, nao envia o email, apenas imprime na tela
         if settings.DEBUG:
-            print('TO: ' + str(a))
+            print('TO: ' + str(a.email_ic()))
             print(header)
             print(message)
         else:

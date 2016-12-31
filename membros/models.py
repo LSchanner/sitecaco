@@ -14,12 +14,13 @@ class Aluno(models.Model):
     )
     nome = models.CharField(max_length=100)
     ra = models.IntegerField(primary_key=True, unique=True)
-    token = models.CharField(max_length = 37)
-    confirmado = models.BooleanField(default = False)
+    ano_ingresso = models.DateField()
+    vinculo = models.CharField(max_length=50,choices=vinculo)
     email_pessoal = models.EmailField()
     nascimento = models.DateField()
     cpf = models.CharField(max_length=20)
-    vinculo = models.CharField(max_length=50,choices=vinculo)
+    token = models.CharField(max_length = 37)
+    confirmado = models.BooleanField(default = False)
 
     def __str__(self):
         return str(self.ra) + ' - ' + self.nome

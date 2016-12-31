@@ -15,7 +15,12 @@ class FormInscricaoMembros(forms.ModelForm):
     )
     nome = forms.CharField(label='Seu Nome', max_length=150)
     ra = forms.IntegerField(label='Seu RA')
-    email_pessoal = forms.EmailField(label='Email')
+    ano_ingresso = forms.DateField(input_formats=['%Y'],
+                                    label='Ano de Ingresso',
+                                    help_text='ex: 2014'
+                                    )
+    vinculo = forms.ChoiceField(vinculo)
+    email_pessoal = forms.EmailField(label='Email Pessoal',required=False)
     nascimento = forms.DateField(input_formats=
                                                 ['%d-%m-%Y',      # '23-11-1994'
                                                  '%d/%m/%Y'],     # '23/11/1994'
@@ -23,9 +28,8 @@ class FormInscricaoMembros(forms.ModelForm):
                                  help_text='ex: 23/11/1994'
                                  )
     cpf = forms.CharField(label='CPF', help_text='Sem pontos e espaco, apenas os números')
-    vinculo = forms.ChoiceField(vinculo)
+
 
     class Meta:
         model = Aluno
-        fields = ['nome', 'ra', 'email_pessoal', 'nascimento', 'cpf', 'vinculo']
-        error_messages =  {x:{"required":"Este campo é obrigatório"} for x in fields}
+        fields = ['nome', 'ra', 'vinculo', 'ano_ingresso', 'email_pessoal', 'nascimento', 'cpf' ]
