@@ -1,0 +1,82 @@
+{% extends "layouts/base.html" %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/slippry.css" />
+<link href="/static/css/slider.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block slider %}
+<div class="header">
+    <div class="container" id="slidercontainer">
+        <ul id="slider">
+            {% if banners %}
+                {% for banner in banners %}
+                <li>
+                    <a hrfe='#'>
+                        <img src='{{ banner.url }}' alt='{{banner.descricao}}'
+                    </a>
+                </li>
+                {% endfor %}
+            {% else %}
+            <li>
+            <a href="#"><img src="/static/images/CACo-logo-2.png" alt="Centro Acadêmico da Computação"></a>
+            </li>
+            <li>
+            <a href="#"><img src="/static/images/pizzada2012.jpg"  alt="Pizzada de 0x10 anos"></a>
+            </li>
+            <li>
+            <a href="#"><img src="/static/images/csop.png" alt="CACo Series of Poker"></a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block title %}Notícias{% endblock %}
+{% block subtitle %}{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+<div style="margin-bottom:50px;">
+    <h2>
+        <a href="{{ URL_BASE }}/noticia/{{post.id}}">{{ post.title }}</a>
+    </h2>
+        <div class="time">
+            Adicionado em <span class="glyphicon glyphicon-time"></span> {{ post.time|date:"D d M Y" }} {{ post.time|time:"H:i" }}
+            </div>
+    {% if post.image %}
+    <hr>
+    <img class="img-responsive" src="{{post.image.url}}" alt="">
+    <hr>
+    {%endif%}
+    <p>{{post.content|truncatewords_html:70|safe}}</p>
+    <a class="btn btn-primary" href="{{ URL_BASE }}/noticia/{{post.id}}">Continue lendo <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+    <hr>
+</div>
+{% endfor %}
+
+
+<!-- Pager -->
+<ul class="pager">
+    <li class="more">
+        <a href="{{ URL_BASE }}/noticias/">Ver mais noticias</a>
+    </li>
+</ul>
+
+{% endblock %}
+
+
+{% block script %}
+<script src="/static/js/slippry.min.js"></script>
+
+<script>
+jQuery(document).ready(function(){
+        jQuery('#slider').slippry()
+        });
+</script>
+
+{% endblock %}
