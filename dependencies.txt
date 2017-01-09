@@ -4,3 +4,4 @@ django-forms-bootstrap
 django-haystack
 django-ckeditor
 pillow
+unidecode
