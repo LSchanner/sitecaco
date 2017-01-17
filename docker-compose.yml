@@ -1,0 +1,55 @@
+version: '2'
+services:
+  site_do_caco:
+    container_name: site-do-caco
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - postgres:postgres
+    volumes:
+      - "staticfiles:/code/static"
+      - "./:/code"
+    depends_on:
+      - postgres
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+    expose:
+      - "8001"
+
+  nginx:
+    container_name: nginx-site
+    restart: always
+    build: ./.nginx-docker/
+    volumes:
+      - "staticfiles:/opt/site/static"
+    ports:
+      - "80:80"
+    depends_on:
+      - "site_do_caco"
+    links:
+      - site_do_caco:site_do_caco
+
+  postgres:
+    container_name: postgres-site
+    restart: always
+    image: postgres:latest
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_SERVICE=postgres
+      - DB_PORT=5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data/
+
+volumes:
+  assets:
+    external: false
+  staticfiles:
+    external: false
+  db:
+    external: false
