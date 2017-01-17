@@ -5,3 +5,5 @@ django-haystack
 django-ckeditor
 pillow
 unidecode
+gunicorn
+psycopg2
