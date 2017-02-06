@@ -21,12 +21,13 @@ inscricao_confirmada = """
 # Lista todos os membros do CACow
 def homeMembros(request):
     c = dict()
-    membros = Aluno.objects.filter(confirmado=True)
+    membros = Aluno.objects.filter(membro_confirmado=True)
     c['membros'] = membros
 
     return render(request, 'membros.html', c)
 
     return redirect('/noticias')
+
 
 # View para gerar o forms de inscricao de membros
 def forms_incricao_membros(request):
@@ -69,12 +70,13 @@ def forms_incricao_membros(request):
     return render(request, 'inscricaoMembros.html', {"form": form})
 
 
+# View para lidar com o token
 def dealToken(request, token):
     c = dict()
     aluno_para_confirmar = get_object_or_404(Aluno, token=token)
 
     # Caso o token já tenha sido utilizado
-    if aluno_para_confirmar.confirmado:
+    if aluno_para_confirmar.membro_confirmado:
         c['title'] = 'Aluno já confirmado'
         c['body'] = """ Esse token já foi utilizado.
                         Se você esta tendo problemas para fazer login, entre em contato conosco na aba contato
@@ -82,7 +84,7 @@ def dealToken(request, token):
         return render(request, 'confirmacaoMembros.html', c)
 
     # Caso esteja lidando com um token que será
-    aluno_para_confirmar.confirmado = True
+    aluno_para_confirmar.membro_confirmado = True
     aluno_para_confirmar.save()
 
 

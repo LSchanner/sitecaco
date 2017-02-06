@@ -21,15 +21,16 @@ class FormInscricaoMembros(forms.ModelForm):
                                     )
     vinculo = forms.ChoiceField(vinculo)
     email_pessoal = forms.EmailField(label='Email Pessoal',required=False)
-    nascimento = forms.DateField(input_formats=
-                                                ['%d-%m-%Y',      # '23-11-1994'
-                                                 '%d/%m/%Y'],     # '23/11/1994'
-                                 label='Data de Nascimento',
-                                 help_text='ex: 23/11/1994'
-                                 )
-    cpf = forms.CharField(label='CPF', help_text='Sem pontos e espaco, apenas os números')
+
+    #nascimento = forms.DateField(input_formats=
+    #                                            ['%d-%m-%Y',      # '23-11-1994'
+    #                                             '%d/%m/%Y'],     # '23/11/1994'
+    #                             label='Data de Nascimento',
+    #                             help_text='ex: 23/11/1994'
+    #                             )
+    #cpf = forms.CharField(label='CPF', help_text='Sem pontos e espaco, apenas os números')
 
 
     class Meta:
         model = Aluno
-        fields = ['nome', 'ra', 'vinculo', 'ano_ingresso', 'email_pessoal', 'nascimento', 'cpf' ]
+        fields = ['nome', 'ra', 'vinculo', 'ano_ingresso', 'email_pessoal']
