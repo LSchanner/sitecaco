@@ -3,7 +3,7 @@ from django import forms
 from sitecaco.models import Arquivo
 
 texto_arquivo = """
-        Banners devem ter o formato 940x348
+        Banners devem ter o formato 940x440
     """
 
 texto_tipo = """

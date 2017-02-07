@@ -14,20 +14,18 @@
             {% if banners %}
                 {% for banner in banners %}
                 <li>
-                    <a hrfe='#'>
-                        <img src='{{ banner.url }}' alt='{{banner.descricao}}'
-                    </a>
+                    <img src='{{ banner.url }}' alt='{{banner.descricao}}'  width="940" height="440"/>
                 </li>
                 {% endfor %}
             {% else %}
             <li>
-            <a href="#"><img src="/static/images/CACo-logo-2.png" alt="Centro Acadêmico da Computação"></a>
+                <img src="/static/images/CACo-logo-2.png" alt="Centro Acadêmico da Computação" width="940" height="440"/>
             </li>
             <li>
-            <a href="#"><img src="/static/images/pizzada2012.jpg"  alt="Pizzada de 0x10 anos"></a>
+                <img src="/static/images/pizzada2012.jpg"  alt="Pizzada de 0x10 anos" width="940" height="440"/>
             </li>
             <li>
-            <a href="#"><img src="/static/images/csop.png" alt="CACo Series of Poker"></a>
+                <img src="/static/images/csop.png" alt="CACo Series of Poker" width="940" height="440"/>
             </li>
             {% endif %}
         </ul>
