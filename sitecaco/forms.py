@@ -3,7 +3,8 @@ from django import forms
 from sitecaco.models import Arquivo
 
 texto_arquivo = """
-        Banners devem ter o formato 940x440
+        Banners devem ter o formato 940x440 -
+        <a href="https://www.gimp.org/tutorials/GIMP_Quickies/">Dica</a>
     """
 
 texto_tipo = """
