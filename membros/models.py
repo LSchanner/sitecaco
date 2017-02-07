@@ -18,7 +18,7 @@ class Aluno(models.Model):
     vinculo = models.CharField(max_length=50,choices=vinculo,null=True)
     email_pessoal = models.EmailField(null=True)
     membro_confirmado = models.BooleanField(default = False)
-    token = models.CharField(max_length = 37)
+    token = models.CharField(max_length = 37, null=True)
     # Campo auxiliar para confirmações em outros momentos (votação? rs)
     token_auxiliar_confirmado = models.BooleanField(default = False)
     # A pedido, foram removidos essas informações...
@@ -42,7 +42,9 @@ class Aluno(models.Model):
         self.token = generateToken()
         self.token_auxiliar_confirmado = False
 
-    # def save(self, *args, **kwargs):
-    #     if not self.pk:
-    #         self.token = generateToken(self.nome + str(self.ra))
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        # Caso para importações dos membros já cadastrados
+        if not self.token:
+            self.token = generateToken(self.nome + str(self.ra))
+            self.membro_confirmado = True
+            super().save(*args, **kwargs)

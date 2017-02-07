@@ -7,20 +7,27 @@ from membros.models import Aluno
 
 import re
 
+
+AGREEMENT_TEXT='Li e concordo com o <a href="http://www.caco.ic.unicamp.br/arquivos/web/EstatutoCACo.pdf">Estatuto do CACo</a>'
+
+
 # Form de inscrição
 class FormInscricaoMembros(forms.ModelForm):
     vinculo = (
         ('Graduacao', 'Graduacao'),
         ('Pós', 'Pós'),
     )
-    nome = forms.CharField(label='Seu Nome', max_length=150)
+    nome = forms.CharField(label='Seu Nome Completo',
+                            max_length=150)
     ra = forms.IntegerField(label='Seu RA')
     ano_ingresso = forms.DateField(input_formats=['%Y'],
                                     label='Ano de Ingresso',
                                     help_text='ex: 2014'
                                     )
     vinculo = forms.ChoiceField(vinculo)
-    email_pessoal = forms.EmailField(label='Email Pessoal',required=False)
+    email_pessoal = forms.EmailField(label='Email Pessoal',required=True)
+    concordo = forms.BooleanField(label=AGREEMENT_TEXT,
+                                  required = True);
 
     #nascimento = forms.DateField(input_formats=
     #                                            ['%d-%m-%Y',      # '23-11-1994'

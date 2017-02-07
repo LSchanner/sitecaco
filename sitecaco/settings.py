@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # 3rd part apps
     'haystack',
     'ckeditor',
+    'import_export',
 
     # Os apps internos
     'sitecaco',
