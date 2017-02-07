@@ -3,6 +3,7 @@ from django.http import Http404
 from django.views.decorators.csrf import csrf_protect
 from django.db.models import Q
 from django.core.mail import send_mail
+from django.conf import settings
 
 from banco_de_provas.models import Prova
 
@@ -51,14 +52,21 @@ def enviar(request):
 
     mensagem = """
 
-        Uma prova nova foi inserida no banco de provas. visite a página
-        http://www.caco.ic.unicamp.br/portal/admin/sitecaco/prova/%s/
+        Uma prova foi inserida no banco de provas.
+        Visite a página http://www.caco.ic.unicamp.br/portal/adminbanco_de_provas/prova/{0}/
         e revise as informações antes de aprovar.
 
-        """ % prova.id
+        Matéria     : {1}
+        Semestre    : {2}
+        Tipo        : {3}
+        Professor   : {4}
 
+        """.format(prova.id, prova.materia, prova.semestre, prova.tipo, prova.professor)
 
-    send_mail("Banco de Provas: submissão " + str(prova.id), mensagem ,
+    if settings.DEBUG:
+        print(mensagem)
+    else:
+        send_mail("Banco de Provas: submissão " + str(prova.id), mensagem ,
             "caco@ic.unicamp.br", ['caco@ic.unicamp.br'])
 
     ##return render(request, 'form_bp.html')
