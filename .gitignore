@@ -4,3 +4,4 @@ sitecaco/media
 sitecaco/local_settings.py
 env
 dump
+config.json
