@@ -18,11 +18,18 @@ import simplejson as json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-config = json.load(open(BASE_DIR+'/config.json')) # Variáveis necessárias
+try:
+    config = json.load(open(BASE_DIR+'/config.json')) # Variáveis necessárias
+except Exception as inst:
+    print("Erro ao abrir o arquivo de configurações config.json")
+    print(type(inst))
+    print(inst)
+    # Como nem carregou configuração, podemos sair do programa
+    sys.exit(1)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config['SECRET_KEY']
 
@@ -31,9 +38,11 @@ URL_BASE = config['URL_BASE']
 
 DEBUG = config['DEBUG']
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config['ALLOWED_HOSTS']
 
 SITE_ID = 1
+
+ADMINS = config['ADMINS']
 
 
 # Application definition
@@ -97,8 +106,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sitecaco.wsgi.application'
 
 # Password validation
-# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-
+# https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators8
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -179,7 +187,7 @@ EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
 
 
 # Search Engine
-# Apena configurado para haystack
+# Apenas configurado para haystack SimpleEngine
 # https://django-haystack.readthedocs.io
 HAYSTACK_CONNECTIONS = {
     'default': {

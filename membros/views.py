@@ -2,18 +2,36 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import EmailMessage
 from django.conf import settings
 
+import simplejson as json
+
 from membros.models import Aluno
 from membros.forms import FormInscricaoMembros
-
 from sitecaco.tools.token import generateToken
 
+config = json.load(open('config.json'))
 
-URL = 'http://127.0.0.1:8000/'
-FROM_EMAIL = 'CACo <caco@ic.unicamp.br>'
-inscricao_confirmada = """
+URL = config['URL_NAME']
+# Nome vai ser: Nome <nome@email.com>
+FROM_EMAIL = config['EMAIL_NAME'] + ' <' + config['EMAIL_HOST_USER'] + '>'
+
+INCRICAO_CONFIRMADA = """
     Você completou sua inscrição, um email foi mandado ao email academico do IC para que você confirme sua identidade.
 
     Cheque seu email em até 30 minutos e se não receber, entre em contato em nosso email
+    """
+MSG_EMAIL = """
+    Olá, essa é uma mensagem automatica para envio do link de inscricao de membro do CACo.
+    O link para sua confirmação é: {}
+
+    Caso tenha recebido esse email por engano, por favor, apenas desconsidere a mensagem <3. Mas se você aina não for membro do CACo, torne-se um!
+    """
+MSG_BOAS_VINDAS = """
+    Seja bem vindo como membro do CACo <b>{primeiro_nome}</b>!
+    Ficamos muito contentes em ter você conosco. Participe de nossas reuniões e aproveite a nossa salinha!
+    """
+MSG_ERRO_TOKEN = """
+    Esse token já foi utilizado.
+    Se você esta tendo problemas para fazer login, entre em contato conosco na aba contato
     """
 
 
@@ -21,13 +39,10 @@ inscricao_confirmada = """
 # Lista todos os membros do CACow
 def homeMembros(request):
     c = dict()
-    membros = Aluno.objects.filter(membro_confirmado=True)
+    membros = Aluno.objects.filter(membro_confirmado=True).order_by('ra')
     c['membros'] = membros
 
     return render(request, 'membros.html', c)
-
-    return redirect('/noticias')
-
 
 # View para gerar o forms de inscricao de membros
 def forms_incricao_membros(request):
@@ -47,7 +62,7 @@ def forms_incricao_membros(request):
         # Para envio do email
         header = '[CACo] Confirmação da Inscricao para Membro'
         link = URL + 'membros/confirmacao/' + str(a.token)
-        message = 'Olá, essa é uma mensagem automatica para envio do link de inscricao de membro do CACo. \nO link para sua confirmação é: %s\nCaso tenha recebido esse email por engano, por favor, apenas desconsidere a mensagem <3\n\n' % link
+        message = MSG_EMAIL.format(link)
 
         # Faz um novo email
         email = EmailMessage(
@@ -65,7 +80,7 @@ def forms_incricao_membros(request):
         else:
             email.send()
 
-        return render(request, 'obrigado.html', {"mensagem": inscricao_confirmada})
+        return render(request, 'obrigado.html', {"mensagem": INCRICAO_CONFIRMADA})
 
     return render(request, 'inscricaoMembros.html', {"form": form})
 
@@ -78,9 +93,7 @@ def dealToken(request, token):
     # Caso o token já tenha sido utilizado
     if aluno_para_confirmar.membro_confirmado:
         c['title'] = 'Aluno já confirmado'
-        c['body'] = """ Esse token já foi utilizado.
-                        Se você esta tendo problemas para fazer login, entre em contato conosco na aba contato
-                    """
+        c['body'] = MSG_ERRO_TOKEN
         return render(request, 'confirmacaoMembros.html', c)
 
     # Caso esteja lidando com um token que será
@@ -90,5 +103,7 @@ def dealToken(request, token):
 
     # TODOS : Elaborar textos melhores para as páginas
     c['title'] = 'Você confirmou sua incrição como membro do CACo'
-    c['body'] = 'Seja bem vindo como membro do CACo {primeiro_nome}!'.format(primeiro_nome=aluno_para_confirmar.nome.partition(' ')[0])
+    c['body'] = MSG_BOAS_VINDAS.format(
+                    primeiro_nome=aluno_para_confirmar.nome.partition(' ')[0]
+                )
     return render(request, 'confirmacaoMembros.html', c)
