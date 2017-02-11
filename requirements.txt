@@ -3,7 +3,6 @@ django-ckeditor==5.2.1
 django-forms-bootstrap
 django-haystack
 django-import-export
-dj-static
 gunicorn
 pillow
 psycopg2
