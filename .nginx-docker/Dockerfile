@@ -1,3 +1,4 @@
 FROM nginx:latest
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY mime_types /etc/nginx/mime.types
+COPY nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /opt/sitecaco

@@ -9,7 +9,8 @@ services:
     links:
       - postgres:postgres
     volumes:
-      - "staticfiles:/code/staticfiles"
+      - "staticfiles:/static"
+      - "mediafiles:/media"
       - "./:/code"
     depends_on:
       - postgres
@@ -24,12 +25,14 @@ services:
     build: ./.nginx-docker/
     volumes:
       - "staticfiles:/opt/site/static"
+      - "mediafiles:/opt/site/media"
     ports:
       - "80:80"
     depends_on:
       - "site_do_caco"
     links:
       - site_do_caco:site_do_caco
+      - postgres:postgres
 
   postgres:
     container_name: postgres-site
@@ -41,8 +44,8 @@ services:
       - DB_PASS=postgres
       - DB_SERVICE=postgres
       - DB_PORT=5432
-    ports:
-      - "5432:5432"
+    expose:
+      - "5432"
     volumes:
       - db:/var/lib/postgresql/data/
 
@@ -50,6 +53,8 @@ volumes:
   assets:
     external: false
   staticfiles:
+    external: false
+  mediafiles:
     external: false
   db:
     external: false
