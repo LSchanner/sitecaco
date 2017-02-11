@@ -1,5 +1,5 @@
-django
-django-ckeditor
+django==1.10
+django-ckeditor==5.2.1
 django-forms-bootstrap
 django-haystack
 django-import-export
