@@ -9,7 +9,7 @@ services:
     links:
       - postgres:postgres
     volumes:
-      - "staticfiles:/code/static"
+      - "staticfiles:/code/staticfiles"
       - "./:/code"
     depends_on:
       - postgres
