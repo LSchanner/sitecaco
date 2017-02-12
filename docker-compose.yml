@@ -26,8 +26,12 @@ services:
     volumes:
       - "staticfiles:/opt/site/static"
       - "mediafiles:/opt/site/media"
+      # This is for letsencrypt cert's
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
+      # Enable https ports (443)
+      - "443:443"
     depends_on:
       - "site_do_caco"
     links:
