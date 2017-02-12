@@ -28,6 +28,7 @@ services:
       - "mediafiles:/opt/site/media"
       # This is for letsencrypt cert's
       - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/le:/var/www/le
     ports:
       - "80:80"
       # Enable https ports (443)
