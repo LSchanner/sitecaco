@@ -43,9 +43,6 @@ class Aluno(models.Model):
         self.token_auxiliar_confirmado = False
 
     # Essa funcao foi feita para quando salvar membros que ja eram do caco
-    #def save(self, *args, **kwargs):
-    #    # Caso para importações dos membros já cadastrados
-    #    if not self.token and not self.ano_ingresso:
-    #        self.token = generateToken(self.nome + str(self.ra))
-    #        self.membro_confirmado = True
-    #        super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        self.token = generateToken(self.nome + str(self.ra))
+        super().save(*args, **kwargs)

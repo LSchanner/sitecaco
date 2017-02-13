@@ -60,25 +60,20 @@ def forms_incricao_membros(request):
         a.save()
 
         # Para envio do email
-        header = '[CACo] Confirmação da Inscricao para Membro'
+        sjt = '[CACo] Confirmação da Inscricao para Membro'
         link = URL + 'membros/confirmacao/' + str(a.token)
-        message = MSG_EMAIL.format(link)
+        msg = MSG_EMAIL.format(link)
 
         # Faz um novo email
         email = EmailMessage(
-            header,
-            message,
+            sjt,
+            msg,
             FROM_EMAIL,
             [a.email_ic()]
         )
 
         # Caso esteja no modo debug, nao envia o email, apenas imprime na tela
-        if settings.DEBUG:
-            print('TO: ' + str(a.email_ic()))
-            print(header)
-            print(message)
-        else:
-            email.send()
+        email.send()
 
         return render(request, 'obrigado.html', {"mensagem": INCRICAO_CONFIRMADA})
 

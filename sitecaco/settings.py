@@ -176,8 +176,11 @@ ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
 
 
-# Email Console backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email Console backend - Se for debug, usa o console...
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Configuração do email
 EMAIL_HOST = config['SECRET_KEY']
 EMAIL_PORT = config['EMAIL_PORT']
@@ -200,7 +203,7 @@ HAYSTACK_CONNECTIONS = {
 RECAPTCHA_SECRET = config['RECAPTCHA_SECRET']
 
 # Configuração do WYSIWYG CKEDITOR
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
 # preprocessador de templates, adiciona URL_BASE ao contexto
 def urlbase(request):
