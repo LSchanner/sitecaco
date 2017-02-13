@@ -10,7 +10,7 @@ services:
       - postgres:postgres
     volumes:
       - "staticfiles:/static"
-      - "mediafiles:/media"
+        #- "mediafiles:/media"
       - "./:/code"
     depends_on:
       - postgres
@@ -24,8 +24,8 @@ services:
     restart: always
     build: ./.nginx-docker/
     volumes:
-      - "staticfiles:/opt/site/static"
-      - "mediafiles:/opt/site/media"
+      - "staticfiles:/static"
+      - "./sitecaco/media:/media"
       # This is for letsencrypt cert's
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/le:/var/www/le
