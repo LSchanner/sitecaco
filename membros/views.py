@@ -73,9 +73,14 @@ def forms_incricao_membros(request):
         )
 
         # Caso esteja no modo debug, nao envia o email, apenas imprime na tela
-        email.send()
+        try:
+            email.send()
 
-        return render(request, 'obrigado.html', {"mensagem": INCRICAO_CONFIRMADA})
+            return render(request, 'obrigado.html', {"mensagem": INCRICAO_CONFIRMADA})
+        except Exception as inst:
+            print("Erro ao enviar email membros")
+            print(type(inst))
+            print(inst)
 
     return render(request, 'inscricaoMembros.html', {"form": form})
 

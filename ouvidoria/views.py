@@ -21,8 +21,16 @@ def OuvidoriaView(request):
         header = " email para resposta: " + request.POST['email'] + \
                 "\n\n---------------------------------------------\n\n"
 
-    send_mail("Ouvidoria: " + request.POST['subject'], header + request.POST['message'] ,
-            "caco@ic.unicamp.br", ['caco@ic.unicamp.br'])
+
+    try:
+        send_mail("Ouvidoria: " + request.POST['subject'],
+                header + request.POST['message'] ,
+                "caco@ic.unicamp.br", ['caco@ic.unicamp.br']
+                )
+    except Exception as inst:
+        print("Erro ao enviar email ouvidoria")
+        print(type(inst))
+        print(inst)
     c['mensagem'] = """
             Obrigado por entrar em contato.
 
