@@ -181,8 +181,7 @@ MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_BACKEND = 'django_uwsgi.mail.EmailBackend'
-    #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Configuração do email
 EMAIL_HOST = str(config['EMAIL_HOST'])
 EMAIL_PORT = int(config['EMAIL_PORT'])
