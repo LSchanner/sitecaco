@@ -29,6 +29,7 @@ services:
       # This is for letsencrypt cert's
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/le:/var/www/le
+      - /var/www/manual:/manual/
     ports:
       - "80:80"
       # Enable https ports (443)
