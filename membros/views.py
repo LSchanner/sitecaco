@@ -26,7 +26,7 @@ MSG_EMAIL = """
     Caso tenha recebido esse email por engano, por favor, apenas desconsidere a mensagem <3. Mas se você aina não for membro do CACo, torne-se um!
     """
 MSG_BOAS_VINDAS = """
-    Seja bem vindo como membro do CACo <b>{primeiro_nome}</b>!
+    Seja bem vindo como membro do CACo {primeiro_nome}!
     Ficamos muito contentes em ter você conosco. Participe de nossas reuniões e aproveite a nossa salinha!
     """
 MSG_ERRO_TOKEN = """
