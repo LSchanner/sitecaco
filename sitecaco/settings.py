@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'haystack',
     'ckeditor',
     'import_export',
+    'django_uwsgi',
 
     # Os apps internos
     'sitecaco',
@@ -180,7 +181,8 @@ MEDIA_ROOT = os.path.join(ENV_PATH, 'media/')
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django_uwsgi.mail.EmailBackend'
+    #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Configuração do email
 EMAIL_HOST = str(config['SECRET_KEY'])
 EMAIL_PORT = int(config['EMAIL_PORT'])

@@ -30,4 +30,6 @@ RUN echo "America/Sao_Paulo" > /etc/timezone && dpkg-reconfigure -f noninteracti
 
 VOLUME /static
 
-CMD ["uwsgi", "--chdir", "/code/", "--module", "sitecaco.wsgi:application", "--socket", "0.0.0.0:8001", "--processes", "5", "--max-requests", "5000", "--vacuum", "--buffer-size", "32768", "--harakiri", "20", "--master"]
+CMD ["uwsgi","--ini", "/code/uwsgi.ini"]
+
+#CMD ["uwsgi", "--chdir", "/code/", "--module", "sitecaco.wsgi:application", "--socket", "0.0.0.0:8001", "--processes", "5", "--max-requests", "5000", "--vacuum", "--buffer-size", "32768", "--harakiri", "20", "--master"]

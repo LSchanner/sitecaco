@@ -19,6 +19,9 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
+# Django uwsgi
+urlpatterns += [url(r'^admin/uwsgi/', include('django_uwsgi.urls')),]
+
 # urlpatterns do projeto - todos são direcionadas aos respe
 urlpatterns += [
     # Redireciona para o app institucional
