@@ -34,8 +34,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/le:/var/www/le
       - /var/www/manual:/manual/
-      # Log compartilhado com o host
-      - /var/log/nginx-sitecaco/:/var/log/
     ports:
       - "80:80"
       # Enable https ports (443)
