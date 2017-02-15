@@ -11,3 +11,4 @@ pymysql
 simplejson
 unidecode
 uwsgi
+uwsgidecorators

@@ -9,11 +9,8 @@ services:
     links:
       - postgres:postgres
     volumes:
-      # Cria a pasta /code dentro do container que é a pasta do projeto
       - "./:/code"
       - "staticfiles:/static"
-      # Log
-      - "/var/log/sitecaco/:/var/log/"
     depends_on:
       - postgres
     environment:
@@ -26,20 +23,12 @@ services:
     restart: always
     build:
       context: ./.nginx-docker
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-local
     volumes:
       - "staticfiles:/static"
       - "./sitecaco/media:/media"
-      # This is for letsencrypt cert's
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/le:/var/www/le
-      - /var/www/manual:/manual/
-      # Log compartilhado com o host
-      - /var/log/nginx-sitecaco/:/var/log/
     ports:
       - "80:80"
-      # Enable https ports (443)
-      - "443:443"
     depends_on:
       - "site_do_caco"
     links:

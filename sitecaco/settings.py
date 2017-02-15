@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os, sys
-# Aqui são mantidas as variáveis específicas a plataforma
+
 import simplejson as json
 
 
@@ -205,6 +205,7 @@ RECAPTCHA_SECRET = config['RECAPTCHA_SECRET']
 # Configuração do WYSIWYG CKEDITOR
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
-# preprocessador de templates, adiciona URL_BASE ao contexto
-def urlbase(request):
-    return {'URL_BASE': URL_BASE}
+# Importa o autoreload do código para uWSGI caso esteja em deploy
+# Usar somente com uWSGI 
+if not DEBUG:
+    import sitecaco.uwsgireload
