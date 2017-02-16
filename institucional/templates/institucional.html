@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+{% block title %}Institucional{% endblock %}
+{% block pagtitle %}Institucional - CACo{% endblock %}
+{%block content%}
+
+{% block css %}
+<link href="/static/css/itens.css" rel="stylesheet">
+{% endblock %}
+
+<a href="/institucional/atas">
+    <div class="item">
+        <h4>  Atas de reuniões do CACo</h4>
+    </div>
+</a>
+
+
+{% for page in pages %}
+<a href="{{ URL_BASE }}{{page.url}}">
+    <div class="item">
+        <h4>  {{page.title}}</h4>
+        {% if page.banner %}
+        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">
+        {%endif%}
+    </div>
+</a>
+{% endfor %}
+
+<a href="http://www.caco.ic.unicamp.br/arquivos/web/EstatutoCACo.pdf">
+    <div class="item">
+        <h4> Estatuto</h4>
+    </div>
+</a>
+{% endblock %}

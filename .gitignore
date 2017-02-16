@@ -1,5 +1,7 @@
 *.pyc
 db.sqlite3
 sitecaco/media
-sitecaco/static
 sitecaco/local_settings.py
+env
+dump
+config.json

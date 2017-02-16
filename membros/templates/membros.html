@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+
+{% block title %}
+    Lista de Membros do CACo
+{% endblock %}
+
+{% block subtitle %}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <p>
+        A lista abaixo é a lista mais atualizado que contém todos os membros do CACo.
+    </p>
+    <p>
+        Caso deseje se desvincular, clice aqui
+    </p>
+    <p>
+        Caso deseje fazer parte, <a href='/membros/inscricao'>clique aqui</a>
+    </p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    RA
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in membros %}
+            <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.ra }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

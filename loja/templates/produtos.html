@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% block title %}Produtos{% endblock %}
+{% block pagtitle %}Produtos - CACo{% endblock %}
+
+{%block css%} <link href="/static/css/shop-homepage.css" rel="stylesheet">{%endblock%}
+{%block content%}
+
+<div class="row">
+{% for produto in produtos %}
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <div class="img-container">
+            <img src="{{produto.imagem.url}}" alt="">
+        </div>
+        <div class="caption">
+            <h4><a href="/produtos/{{produto.id}}">{{produto.name}}</a>
+            </h4>
+            <p style="clear:both;">{{produto.description|truncatewords_html:10|safe}}</p>
+        </div>
+            <h4 class="price pull-right">R$ {{produto.price}}</h4>
+        <div class="ratings">
+            <p class="pull-right">&infin; reviews</p>
+            <p>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+
+<p class="lead"> Todos os produtos estão disponíveis para venda na salinha do CACo, durante os horários de atendimento. </p>
+
+{% endblock %}

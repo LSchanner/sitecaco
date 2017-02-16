@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% load bootstrap_tags %}
+
+
+{% block title %}
+    <a href="{{ URL_BASE }}/membros/inscricao">Inscrição de Novo Membro</a>
+{% endblock %}
+
+{% block subtitle %}
+{% endblock %}
+
+{% block css %}
+{% endblock %}
+
+
+{% block content %}
+{% if fechadas %}
+<h2>
+    Inscrição Fechada
+</h2>
+<p>
+    Durante alguns periodos (assembleias, eleições, etc) fechamos nossas inscrições. Em alguns dias, já devemos estar aceitando novos membros!
+</p>
+{% else %}
+<p>
+    Formulário de inscrição para membro do CACo
+    (...)
+</p>
+
+<form role="form" method="POST">
+    {% csrf_token %}
+    {{ form|as_bootstrap }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endif %}
+
+
+{% endblock %}

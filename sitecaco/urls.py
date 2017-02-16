@@ -1,65 +1,50 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.static import static
+
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 
-#Todas as views estão contidas nesse módulo
-from sitecaco.views import *
 
+# Para gerar uma página de 404 e 500 diferenciada
+handler404 = 'sitecaco.views.page_not_found'
+handler500 = 'sitecaco.views.server_error'
 
-urlpatterns = patterns('',
+urlpatterns = []
 
-    #urls do site
-    url(r'^$', cms.HomeView),
-    url(r'^institucional/$', cms.InstitucionalView),
-    url(r'^eventos/$', cms.EventosView),
-    url(r'^servicos/$', cms.ServicosView),
-    url(r'^institucional/atas/(?P<pag>[0-9]*)', cms.AtasView),
-    url(r'^institucional/ata/(?P<id>[0-9]*)', cms.AtaView),
-    url(r'^noticias/(?P<pag>[0-9]*)', cms.NoticiasView),
-    url(r'^noticia/(?P<id>[0-9]*)', cms.NoticiaView),
-    url(r'^produtos/(?P<id>[0-9]*)', cms.ProdutosView),
-
-    #Banco de Provas
-    url('^bancodeprovas/enviar', banco_provas.enviar),
-    url('^bancodeprovas/', banco_provas.BancoView),
-
-    #Busca em atas,páginas e notícias
-    url(r'^busca/$', busca.BuscaView),
-
-    #Busca em uma das três cartegorias
-    url(r'^busca/(?P<tipo>(ata|pagina|noticia))/(?P<pag>[0-9]*)$', busca.BuscaCartegoriaView),
-
-    #Ouvidoria
-    url(r'^contato/', ouvidoria.view),
-
-    #Banco de Livros
-    url(r'^bancodelivros/', banco_livro.LivroView),
-
-
-    #urls da interface de admin
-    url(r'^admin/', include(admin.site.urls)),
-    )
-
-
-if settings.INSCRICOES_FISL_ABERTAS:
-    urlpatterns += patterns('',
-        #Formulário de inscricao no fisl
-        url(r'^eventos/fisl/inscricao', inscricao_fisl.submit_form)
-        )
-else:
-    urlpatterns += patterns('',
-        #Formulário de inscricao no fisl
-        url(r'^eventos/fisl/inscricao', inscricao_fisl.inscricoes_fechadas)
-        )
-
+# Para quando os path MEDIA e STATIC quando rodar localmente
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT,
-        }),
-    )
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Django uwsgi
+urlpatterns += [url(r'^admin/uwsgi/', include('django_uwsgi.urls')),]
+
+# urlpatterns do projeto - todos são direcionadas aos respe
+urlpatterns += [
+    # Redireciona para o app institucional
+    url(r'^institucional', include('institucional.urls')),
+    # Redireciona para o app de Noticias e um id de noticia
+    url(r'^noticia', include('noticias.urls')),
+    # Redireciona para o app Loja
+    url(r'^produtos', include('loja.urls')),
+    # Ouvidoria (FALTA IMPLEMENTAR E TESTAR)
+    url(r'^contato', include('ouvidoria.urls')),
+    # Redireciona para o app Banco de Provas
+    url(r'^bancodeprovas', include('banco_de_provas.urls')),
+    # Banco de Livros
+    url(r'^bancodelivros', include('banco_de_livros.urls')),
+    # FISL
+    url(r'^eventos/fisl/', include('fisl.urls')),
+    # Busca em atas,páginas e notícias
+    url(r'^busca', include('busca.urls')),
+    # Membros
+    url(r'^membros', include('membros.urls')),
+    # URLs da interface de admin
+    url(r'^admin\/?', admin.site.urls),
+
+    # Redirecionamento para páginas (Como sao mais abrangentes ficam por ultimo)
+    url(r'', include('paginas.urls')),
+]
