@@ -60,8 +60,7 @@ INSTALLED_APPS = [
     'haystack',
     'ckeditor',
     'import_export',
-    'django_uwsgi',
-    'google_analytics',
+    'analytical',
 
     # Os apps internos
     'sitecaco',
@@ -204,9 +203,8 @@ HAYSTACK_CONNECTIONS = {
 RECAPTCHA_SECRET = config['RECAPTCHA_SECRET']
 
 # Configuração do google analytics
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': config['ANALYTICS_ID'],
-}
+GOOGLE_ANALYTICS_PROPERTY_ID = config['ANALYTICS_ID']
+GOOGLE_ANALYTICS_SITE_SPEED = True
 
 # Configuração do WYSIWYG CKEDITOR
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'

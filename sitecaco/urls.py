@@ -46,8 +46,6 @@ urlpatterns += [
     url(r'^admin\/?', admin.site.urls),
 
     # Third Apps
-    # Django Google Analytics
-    url(r'^djga/', include('google_analytics.urls')),
 
     # Redirecionamento para páginas (Como sao mais abrangentes ficam por ultimo)
     url(r'', include('paginas.urls')),
