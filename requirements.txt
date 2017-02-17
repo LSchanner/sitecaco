@@ -1,6 +1,7 @@
 django==1.10
 django-ckeditor==5.2.1
 django-forms-bootstrap
+django-google-analytics
 django-haystack
 django-import-export
 django-uwsgi[uwsgi]

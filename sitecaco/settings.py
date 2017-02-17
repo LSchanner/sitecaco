@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'import_export',
     'django_uwsgi',
+    'google_analytics',
 
     # Os apps internos
     'sitecaco',
@@ -202,10 +203,15 @@ HAYSTACK_CONNECTIONS = {
 # Configuração antibot do google (recaptcha)
 RECAPTCHA_SECRET = config['RECAPTCHA_SECRET']
 
+# Configuração do google analytics
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': config['ANALYTICS_ID'],
+}
+
 # Configuração do WYSIWYG CKEDITOR
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
 # Importa o autoreload do código para uWSGI caso esteja em deploy
-# Usar somente com uWSGI 
+# Usar somente com uWSGI
 if not DEBUG:
     import sitecaco.uwsgireload
