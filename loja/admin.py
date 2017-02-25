@@ -4,9 +4,9 @@ from loja.models import Produto
 from loja.forms import formsProduto
 
 
-class AdminProduto(OrderedModelAdmin):
+class AdminProduto(admin.ModelAdmin):
     form = formsProduto
-    list_display = ('name', 'price', 'move_up_down_links')
+    list_display = ('name', 'price')
     search_fields = ['name', 'price']
 
 admin.site.register(Produto,AdminProduto)
