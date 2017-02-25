@@ -17,6 +17,6 @@ class Ata(models.Model):
 
     # Para automaticamente criar com o nome correto
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if not self.pk and not self.title:
             self.title = "Reunião - " + str(datetime.datetime.today().strftime('%d/%m/%Y'))
         super().save(*args, **kwargs)
