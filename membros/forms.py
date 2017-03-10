@@ -8,7 +8,7 @@ from membros.models import Aluno
 import re
 
 
-AGREEMENT_TEXT='Li e concordo com o <a href="http://www.caco.ic.unicamp.br/arquivos/web/EstatutoCACo.pdf">Estatuto do CACo</a>'
+AGREEMENT_TEXT='Li e concordo com o <a href="http://www.caco.ic.unicamp.br/media/web/EstatutoCACo.pdf">Estatuto do CACo</a>'
 
 
 # Form de inscrição

@@ -65,6 +65,7 @@ crie o arquivo `config.json` no root do projeto com o seguinte conteúdo - modif
   "EMAIL_HOST_USER": "usuario@email",
   "EMAIL_HOST_PASSWORD": "senhaemail",
   "RECAPTCHA_SECRET": "segredo-do-recaptcha",
+  "ANALYTICS_ID": "googleanalytics id",
   "ADMINS":  []
 }
 
@@ -116,6 +117,7 @@ O nginx está configurado para servir somente na porta 443 (https). Para gerar c
   "EMAIL_HOST_USER": "usuario@email",
   "EMAIL_HOST_PASSWORD": "senhaemail",
   "RECAPTCHA_SECRET": "segredo-do-recaptcha",
+  "ANALYTICS_ID": "googleanalytics id",
   "ADMINS": [
               ["Nome", "email"],
               ["Nome2", "email2 (...)"]

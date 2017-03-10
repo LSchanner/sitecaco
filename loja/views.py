@@ -1,11 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from loja.models import Produto
 
 def ProdutosView(request,id):
     if(id):
-        id = int(id)
-        produto = Produto.objects.get(id = id)
+        produto = get_object_or_404(Produto, id = int(id))
         return render(request, 'produto.html', {'produto' : produto})
 
     produtos = Produto.objects.all()

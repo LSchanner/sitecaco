@@ -1,4 +1,5 @@
 django==1.10
+django-analytical
 django-ckeditor==5.2.1
 django-forms-bootstrap
 django-haystack

@@ -20,13 +20,21 @@ def BuscaView(request):
     # Indica que existe termo de busca
     c['query'] = termo
 
-    # Busca pelo termo
+    # Busca pelo em todo o banco de dads
     results = SearchQuerySet().auto_query(termo).order_by("-time")
 
     # Separa os resultados
     noticias = results.models(Noticia)
     atas = results.models(Ata)
     paginas = results.models(Pagina)
+
+    count = 0
+    if noticias:
+        count = count + 1
+    if atas:
+        count = count + 1
+    if paginas:
+        count = count + 1
 
     # verifica se há mais resultados
     if noticias.count() > 10:
@@ -44,7 +52,7 @@ def BuscaView(request):
     c['noticias'] =  noticias
     c['atas'] =  atas
     c['paginas'] =  paginas
-
+    c['morethan2'] = True if count > 1 else False
 
     return render(request, 'busca.html', c)
 
@@ -67,9 +75,9 @@ def BuscaCartegoriaView(request,tipo,pag):
         modelo = Noticia
 
     # Página a ser exibida
-    if pag != '':
+    if pag:
         pag = int(pag)
-    else :
+    else:
         pag = 1
 
     # O termo a ser procurado

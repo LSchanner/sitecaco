@@ -1,13 +1,13 @@
+{% load analytical %}
 <!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<html lang="pt" xmlns:fb="http://ogp.me/ns/fb#">
 
     <head>
+        {% analytical_head_top %}
         <meta charset="utf-8">
-        <meta property="og:image" content="http://www.caco.ic.unicamp.br/static/images/CACo-logo-fb.png" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <meta name="description" content="Centro Academico da Computação - Unicamp">
-        <meta name="author" content="">
 
         <title>
             {% block pagtitle%}
@@ -15,8 +15,9 @@
             {% endblock %}
         </title>
 
+        <link rel="shortcut icon" type="image/ico" href="/static/favicon.ico"/>
+        <link rel="shortcut icon" type="image/ico" href="http://www.caco.ic.unicamp.br/static/favicon.ico"/>
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
         <link href="/static/css/blog-home.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Roboto:500&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -25,10 +26,16 @@
 
         {% block head %}
         {% endblock %}
+
+        <!-- Meta for sharing -->
+        <meta property="og:image" content="/static/images/CACo-logo-fb.png"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        {% analytical_head_bottom %}
     </head>
 
     <body>
-
+        {% analytical_body_top %}
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container" id="container-navbar">
@@ -97,7 +104,6 @@
 
                 <!-- Blog Sidebar Widgets Column -->
                 <div class="col-md-4">
-
                     <!-- Blog Search Well -->
                     <div class="well">
                         <h4>Buscar</h4>
@@ -110,7 +116,7 @@
                                 </button>
                             </span>
                         </div>
-                    </form>
+                        </form>
                         <!-- /.input-group -->
                     </div>
 
@@ -132,29 +138,26 @@
 
             <!-- Footer -->
             <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
+                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+                <!-- /.row -->
             </footer>
-
         </div>
         <!-- /.container -->
 
         <!-- jQuery Version 1.11.0 -->
         <script src="/static/js/jquery-3.1.1.js"></script>
-
         <!-- JQeurie plugin restores deprecated features and behaviors -->
         <script src="/static/js/jquery-migrate-1.4.1.js"></script>
-
         <!-- Bootstrap Core JavaScript -->
         <script src="/static/js/bootstrap.min.js"></script>
-
         {%block script%}{%endblock%}
 
+        {% analytical_body_bottom %}
     </body>
 
 </html>
