@@ -3,7 +3,7 @@
 {% block pagtitle %}Institucional - CACo{% endblock %}
 {%block content%}
 
-{% block css %} 
+{% block css %}
 <link href="/static/css/itens.css" rel="stylesheet">
 {% endblock %}
 
@@ -17,15 +17,15 @@
 {% for page in pages %}
 <a href="{{ URL_BASE }}{{page.url}}">
     <div class="item">
-        <h4>  {{page.title}}</h4>	
+        <h4>  {{page.title}}</h4>
         {% if page.banner %}
-        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">        
+        <img class="img-responsive" src="{{page.banner.url}}" alt="{{page.title}}" style="width: 100%;">
         {%endif%}
     </div>
 </a>
 {% endfor %}
 
-<a href="http://www.caco.ic.unicamp.br/arquivos/web/EstatutoCACo.pdf">
+<a href="http://www.caco.ic.unicamp.br/media/web/EstatutoCACo.pdf">
     <div class="item">
         <h4> Estatuto</h4>
     </div>
